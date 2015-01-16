@@ -1,0 +1,16 @@
+.terminal-name
+.gemtags
+.tags
+.ruby-version
+curl_calls
+mws_*
+shared/*
+resque.sh
+*.fls
+.tags_sorted_by_file
+*middleware_documentation.aux
+*middleware_documentation.log
+*middleware_documentation.out
+*middleware_documentation.pdf
+*middleware_documentation.synctex.gz
+*middleware_documentation.toc

@@ -1,0 +1,55 @@
+[user]
+	name = Paweł Madejski
+	email = pmadejski@cubiware.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[merge]
+	tool = meld
+  conflictstyle = diff3
+[alias]
+	st = status
+	co = checkout
+	cob = checkout -b personal/pawelm/
+	di = diff --color
+	dis = diff --staged
+	ci = commit
+	sl = stash list
+	ss = stash show
+	ss0 = stash show stash@{0}
+	ss1 = stash show stash@{1}
+	ss2 = stash show stash@{2}
+	ss3 = stash show stash@{3}
+	ss4 = stash show stash@{4}
+	ss5 = stash show stash@{5}
+	sp = stash pop
+	rbc = rebase --continue
+	rba = rebase --abort
+	rbs = rebase --skip
+	cpa = cherry-pick --abort
+	cp  = cherry-pick
+	pt = push --tags
+	rbi = rebase -i HEAD~2
+	rbi1 = rebase -i HEAD~1
+	rbi2 = rebase -i HEAD~2
+	rbi3 = rebase -i HEAD~3
+	rbi4 = rebase -i HEAD~4
+	rbi5 = rebase -i HEAD~5
+	rbi6 = rebase -i HEAD~6
+	rbi7 = rebase -i HEAD~7
+	rbi8 = rebase -i HEAD~8
+	rbi9 = rebase -i HEAD~9
+	rbi10 = rebase -i HEAD~10
+	prbs = pull --rebase --stat
+	prbc = pull --rebase --continue
+
+	#http://blog.kfish.org/2010/04/git-lola.html
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+
+	#meld
+	meld = !/home/pawel/cubiware/share/scripts/git-meld/git-meld.pl
+[color]
+	ui = auto
+[push]
+	default = current
