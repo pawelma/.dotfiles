@@ -196,6 +196,7 @@ for_window [class="Nautilus" instance="file_progress"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="Guake"] floating enable
 for_window [class="nuvolaplayer"] floating enable
+for_window [class="Pidgin" window_role="buddy_list"] floating enable
 for_window [class="Firefox"] border 1px
 for_window [class="Opera"] border 1px
 
