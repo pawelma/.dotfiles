@@ -4,11 +4,7 @@ end
 
 function fish_title
   if test -f .terminal-name
-    if test -z "$name"
-      echo (terminal_name)
-    else
-      echo 2
-    end
+    echo (terminal_name)
   else
     echo "fish"
   end
