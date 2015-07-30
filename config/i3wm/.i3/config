@@ -91,46 +91,69 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $win+1 workspace l1
+bindsym $win+2 workspace l2
+bindsym $win+3 workspace l3
+bindsym $win+4 workspace l4
+bindsym $win+5 workspace l5
+bindsym $win+6 workspace l6
+bindsym $win+7 workspace l7
+bindsym $win+8 workspace l8
+bindsym $win+9 workspace l9
+bindsym $win+0 workspace l10
 
-bindsym $win+1 workspace 6
-bindsym $win+2 workspace 7
-bindsym $win+3 workspace 8
-bindsym $win+4 workspace 9
-bindsym $win+6 workspace 10
+bindsym $mod+1 workspace r1
+bindsym $mod+2 workspace r2
+bindsym $mod+3 workspace r3
+bindsym $mod+4 workspace r4
+bindsym $mod+5 workspace r5
+bindsym $mod+6 workspace r6
+bindsym $mod+7 workspace r7
+bindsym $mod+8 workspace r8
+bindsym $mod+9 workspace r9
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $win+Shift+1 move container to workspace l1
+bindsym $win+Shift+2 move container to workspace l2
+bindsym $win+Shift+3 move container to workspace l3
+bindsym $win+Shift+4 move container to workspace l4
+bindsym $win+Shift+5 move container to workspace l5
+bindsym $win+Shift+6 move container to workspace l6
+bindsym $win+Shift+7 move container to workspace l7
+bindsym $win+Shift+8 move container to workspace l8
+bindsym $win+Shift+9 move container to workspace l9
+bindsym $win+Shift+0 move container to workspace l10
+
+bindsym $mod+Shift+1 move container to workspace r1
+bindsym $mod+Shift+2 move container to workspace r2
+bindsym $mod+Shift+3 move container to workspace r3
+bindsym $mod+Shift+4 move container to workspace r4
+bindsym $mod+Shift+5 move container to workspace r5
+bindsym $mod+Shift+6 move container to workspace r6
+bindsym $mod+Shift+7 move container to workspace r7
+bindsym $mod+Shift+8 move container to workspace r8
+bindsym $mod+Shift+9 move container to workspace r9
 
 # workspace screens
-workspace 1 output VGA1
-workspace 2 output VGA1
-workspace 3 output VGA1
-workspace 4 output VGA1
-workspace 5 output VGA1
-workspace 6 output HDMI1
-workspace 7 output HDMI1
-workspace 8 output HDMI1
-workspace 9 output HDMI1
-workspace 10 output HDMI1
+workspace l1 output VGA1
+workspace l2 output VGA1
+workspace l3 output VGA1
+workspace l4 output VGA1
+workspace l5 output VGA1
+workspace l6 output VGA1
+workspace l7 output VGA1
+workspace l8 output VGA1
+workspace l9 output VGA1
+workspace l10 output VGA1
+workspace r1 output HDMI1
+workspace r2 output HDMI1
+workspace r3 output HDMI1
+workspace r4 output HDMI1
+workspace r5 output HDMI1
+workspace r6 output HDMI1
+workspace r7 output HDMI1
+workspace r8 output HDMI1
+workspace r9 output HDMI1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -175,6 +198,7 @@ bar {
 # Lock system.
 # you can set wallpaper using -i option (-t to tile image to 2 different monoitors) : see `man i3`
 bindsym $win+l exec i3lock -c 000000
+bindsym Control+$mod+l exec i3lock -c 000000
 
 # Set volume controll
 bindsym $mod+plus exec pactl set-sink-volume 0 +5%
@@ -196,14 +220,28 @@ for_window [class="Nautilus" instance="file_progress"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="Guake"] floating enable
 for_window [class="nuvolaplayer"] floating enable
+for_window [class="Nuvolaplayer3-grooveshark"] floating enable
 for_window [class="Pidgin" window_role="buddy_list"] floating enable
 for_window [class="Firefox"] border 1px
 for_window [class="Opera"] border 1px
+for_window [class="Tkdiff"] floating enable
+for_window [class="Meld"] floating enable
+for_window [class="Shutter"] floating enable
 
 # assign windows to workspaces
-assign [class="Firefox"] 1
-assign [class="Opera"] 1
+assign [class="Firefox"] l1
+assign [class="Opera"] l1
+assign [class="ioquake"] l10
+
+# open new window in Sublime
+bindsym $mod+backslash exec s-n
+
+# toggle mocp pause to pause/break key
+bindsym Break exec mocp -G
 
 # autostart
 # exec firefox
 
+# i3 HUD menu
+#exec ~/.i3/i3-hud-menu/i3-appmenu-service.py
+#bindsym $mod+x exec ~/.i3/i3-hud-menu/i3-hud-menu.py

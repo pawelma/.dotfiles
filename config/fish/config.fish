@@ -24,6 +24,8 @@ set __fish_git_prompt_char_upstream_behind '←'
 
 # Initialize rvm on startup
 rvm reload > /dev/null
+# load rspec functions
+rspec --help > /dev/null
 
 # ALIASES
 # some more ls aliases
@@ -61,7 +63,7 @@ alias stheme='cp /home/pawel/.config/sublime-text-2/theme_configs/Afterglow.subl
 
 #  box alias
 # alias box='echo "XMLRPC_TRACE_XML=1 cubitv; stty echo" && ssh -c 3des -i ~/.ssh/id_rsa.new admin@192.168.215.223'
-alias box='echo "XMLRPC_TRACE_XML=1 QBNoRedir=1 cubitv ;  echo -n V > /dev/watchdog ; stty echo" & ssh -c 3des -i ~/.ssh/id_rsa.new admin@192.168.215.206'
+alias box='echo "XMLRPC_TRACE_XML=1 QBNoRedir=1 cubitv ;  echo -n V > /dev/watchdog ; stty echo" & ssh -c 3des -i ~/.ssh/id_rsa.new admin@192.168.214.230'
 
 # rvm aliases
 alias rvmc='rvm current'
