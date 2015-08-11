@@ -1,0 +1,37 @@
+{
+	"caret_extra_width": 1,
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/SublimeLinter/Tomorrow (SL).tmTheme",
+	"copy_with_empty_selection": false,
+	"drag_text": false,
+	"file_exclude_patterns":
+	[
+		"*.tags",
+		"*.tags_sorted_by_file",
+		"*.terminal-name",
+		"*.gemtags"
+	],
+	"findreplace_medium": true,
+	"font_face": "Source Code Pro",
+	"font_size": 10,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage",
+		"Markdown",
+		"BracketHighlighter"
+	],
+	"rulers":
+	[
+		80
+	],
+	"scroll_past_end": true,
+	"sidebar_small": true,
+	"tab_size": 2,
+	"tabs_medium": true,
+	"theme": "Numix Light.sublime-theme",
+	"toggle_menu": true,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}

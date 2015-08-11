@@ -1,0 +1,24 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"ColorSchemeSelector",
+		"Colorsublime",
+		"CTags",
+		"fish-shell",
+		"Git",
+		"Indent XML",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"nginx",
+		"Package Control",
+		"RSense",
+		"SqlBeautifier",
+		"SublimeLinter",
+		"SublimeLinter-rubocop",
+		"SublimeLinter-ruby",
+		"Theme - Numix Light"
+	]
+}

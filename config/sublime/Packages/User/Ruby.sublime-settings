@@ -1,0 +1,8 @@
+{
+  "extensions":
+  [
+    "Gemfile",
+    "Gemfile.lock",
+    "config.ru"
+  ]
+}
