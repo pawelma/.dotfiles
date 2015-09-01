@@ -1,0 +1,7 @@
+set tab-size         = 4    # Number of spaces to use when expanding tabs
+set line-graphics    = default  # Enum: ascii, default, utf-8
+
+set reference-format = [tag] <tracked-remote> hide:remote hide:branch
+
+set diff-context     = 4    # Number of lines to show around diff changes (diff)
+
