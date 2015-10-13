@@ -71,3 +71,11 @@ alias rvm1='rvm use ruby-1.9.3-p545@mw2'
 alias rvm2='rvm use 2.1.5@mw2'
 alias rv1='echo ruby-1.9.3-p545@mw2 > .ruby-version'
 alias rv2='echo ruby-2.1.5@mw2 > .ruby-version'
+
+# add gopath
+set -x GOPATH $HOME/goapps
+
+# add linuxbrew to PATH
+set -x PATH $HOME/github/linuxbrew/bin $PATH
+set -x MANPATH $HOME/github/linuxbrew/share/man $MANPATH
+set -x INFOPATH $HOME/github/linuxbrew/share/info $INFOPATH
