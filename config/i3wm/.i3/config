@@ -210,7 +210,8 @@ bindsym $mod+Tab workspace back_and_forth
 # scratchpad
 bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
-bindsym F12 scratchpad show
+bindsym F12 [class="Gnome-terminal"] scratchpad show
+bindsym $win+s [title="Skype"]  scratchpad show
 
 # border changing
 bindsym $mod+b border toggle
@@ -229,7 +230,7 @@ for_window [class="Meld"] floating enable
 for_window [class="Shutter"] floating enable
 for_window [class="Thunderbird" window_role="Msgcompose"] floating enable
 for_window [class="Skype"] floating enable
-for_window [class="Skype" window_role="ConversationsWindow"] floating disable 
+for_window [class="Skype" window_role="ConversationsWindow"] floating disable
 
 # assign windows to workspaces
 assign [class="Firefox"] l1
