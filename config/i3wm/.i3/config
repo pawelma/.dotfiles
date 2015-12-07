@@ -90,70 +90,95 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $win+1 workspace l1
-bindsym $win+2 workspace l2
-bindsym $win+3 workspace l3
-bindsym $win+4 workspace l4
-bindsym $win+5 workspace l5
-bindsym $win+6 workspace l6
-bindsym $win+7 workspace l7
-bindsym $win+8 workspace l8
-bindsym $win+9 workspace l9
-bindsym $win+0 workspace l10
+set $l1 workspace I
+set $l2 workspace II
+set $l3 workspace III
+set $l4 workspace IV
+set $l5 workspace V
+set $l6 workspace VI
+set $l7 workspace VII
+set $l8 workspace VIII
+set $l9 workspace IX
+set $l10 workspace X
 
-bindsym $mod+1 workspace r1
-bindsym $mod+2 workspace r2
-bindsym $mod+3 workspace r3
-bindsym $mod+4 workspace r4
-bindsym $mod+5 workspace r5
-bindsym $mod+6 workspace r6
-bindsym $mod+7 workspace r7
-bindsym $mod+8 workspace r8
-bindsym $mod+9 workspace r9
+set $r1 workspace 1
+set $r2 workspace 2
+set $r3 workspace 3
+set $r4 workspace 4
+set $r5 workspace 5
+set $r6 workspace 6
+set $r7 workspace 7
+set $r8 workspace 8
+set $r9 workspace 9
+set $r10 workspace 10
+
+# switch to workspace
+bindsym $win+1 $l1
+bindsym $win+2 $l2
+bindsym $win+3 $l3
+bindsym $win+4 $l4
+bindsym $win+5 $l5
+bindsym $win+6 $l6
+bindsym $win+7 $l7
+bindsym $win+8 $l8
+bindsym $win+9 $l9
+bindsym $win+0 $l10
+
+bindsym $mod+1 $r1
+bindsym $mod+2 $r2
+bindsym $mod+3 $r3
+bindsym $mod+4 $r4
+bindsym $mod+5 $r5
+bindsym $mod+6 $r6
+bindsym $mod+7 $r7
+bindsym $mod+8 $r8
+bindsym $mod+9 $r9
+bindsym $mod+0 $r10
 
 # move focused container to workspace
-bindsym $win+Shift+1 move container to workspace l1
-bindsym $win+Shift+2 move container to workspace l2
-bindsym $win+Shift+3 move container to workspace l3
-bindsym $win+Shift+4 move container to workspace l4
-bindsym $win+Shift+5 move container to workspace l5
-bindsym $win+Shift+6 move container to workspace l6
-bindsym $win+Shift+7 move container to workspace l7
-bindsym $win+Shift+8 move container to workspace l8
-bindsym $win+Shift+9 move container to workspace l9
-bindsym $win+Shift+0 move container to workspace l10
+bindsym $win+Shift+1 move container to $l1
+bindsym $win+Shift+2 move container to $l2
+bindsym $win+Shift+3 move container to $l3
+bindsym $win+Shift+4 move container to $l4
+bindsym $win+Shift+5 move container to $l5
+bindsym $win+Shift+6 move container to $l6
+bindsym $win+Shift+7 move container to $l7
+bindsym $win+Shift+8 move container to $l8
+bindsym $win+Shift+9 move container to $l9
+bindsym $win+Shift+0 move container to $l10
 
-bindsym $mod+Shift+1 move container to workspace r1
-bindsym $mod+Shift+2 move container to workspace r2
-bindsym $mod+Shift+3 move container to workspace r3
-bindsym $mod+Shift+4 move container to workspace r4
-bindsym $mod+Shift+5 move container to workspace r5
-bindsym $mod+Shift+6 move container to workspace r6
-bindsym $mod+Shift+7 move container to workspace r7
-bindsym $mod+Shift+8 move container to workspace r8
-bindsym $mod+Shift+9 move container to workspace r9
+bindsym $mod+Shift+1 move container to $r1
+bindsym $mod+Shift+2 move container to $r2
+bindsym $mod+Shift+3 move container to $r3
+bindsym $mod+Shift+4 move container to $r4
+bindsym $mod+Shift+5 move container to $r5
+bindsym $mod+Shift+6 move container to $r6
+bindsym $mod+Shift+7 move container to $r7
+bindsym $mod+Shift+8 move container to $r8
+bindsym $mod+Shift+9 move container to $r9
+bindsym $mod+Shift+0 move container to $r10
 
 # workspace screens
-workspace l1 output VGA1
-workspace l2 output VGA1
-workspace l3 output VGA1
-workspace l4 output VGA1
-workspace l5 output VGA1
-workspace l6 output VGA1
-workspace l7 output VGA1
-workspace l8 output VGA1
-workspace l9 output VGA1
-workspace l10 output VGA1
-workspace r1 output HDMI1
-workspace r2 output HDMI1
-workspace r3 output HDMI1
-workspace r4 output HDMI1
-workspace r5 output HDMI1
-workspace r6 output HDMI1
-workspace r7 output HDMI1
-workspace r8 output HDMI1
-workspace r9 output HDMI1
+$l1 output VGA1
+$l2 output VGA1
+$l3 output VGA1
+$l4 output VGA1
+$l5 output VGA1
+$l6 output VGA1
+$l7 output VGA1
+$l8 output VGA1
+$l9 output VGA1
+$l10 output VGA1
+$r1 output HDMI1
+$r2 output HDMI1
+$r3 output HDMI1
+$r4 output HDMI1
+$r5 output HDMI1
+$r6 output HDMI1
+$r7 output HDMI1
+$r8 output HDMI1
+$r9 output HDMI1
+$r10 output HDMI1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -188,12 +213,54 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+### THEME ###
+set $FOCUS #989898
+set $UNFOCUS #3c3b37
+set $BLACK #000000
+set $WHITE #ffffff
+set $ORANGE #d64937
+set $GRAY #454545
+set $GREEN #00ad17
+
+# Layout colors      bord  bg    text    indicator (split)
+client.focused       $GRAY $GRAY $WHITE $GRAY
+client.focused_inactive $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
+client.unfocused     $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
+client.urgent      $FOCUS $FOCUS $UNFOCUS $FOCUS
+client.background    $UNFOCUS
+
+### Borders ###
+#new_window pixel 4
+new_float pixel 4
+
+### Gaps ###
+#set $default_gaps_inner 12
+#set $default_gaps_outer 0
+#gaps inner $default_gaps_inner
+#gaps outer $default_gaps_outer
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
 	position top
-        status_command i3status
+        status_command ~/.i3/extended-i3-status/extended_id_status.sh
+        tray_padding 1
+        colors {
+                background $GRAY
+                statusline $WHITE
+                separator #222222
+
+                #layout colors     border backgorund text
+                focused_workspace  $ORANGE $ORANGE $WHITE
+                active_workspace   $GRAY   $GRAY   $ORANGE
+                inactive_workspace $GRAY   $GRAY   $WHITE
+                urgent_workspace   $GREEN $GREEN   $WHITE
+        }
 }
+# LEMONBAR
+#exec --no-startup-id conky -c ~/.i3/lemonbar/conky_empty_panel.config
+#exec --no-startup-id ~/.i3/lemonbar/bar.sh
 
 # Lock system.
 # you can set wallpaper using -i option (-t to tile image to 2 different monoitors) : see `man i3`
@@ -223,8 +290,8 @@ for_window [class="Guake"] floating enable
 for_window [class="nuvolaplayer"] floating enable
 for_window [class="Nuvolaplayer3-grooveshark"] floating enable
 for_window [class="Pidgin" window_role="buddy_list"] floating enable
-for_window [class="Firefox"] border 1px
-for_window [class="Opera"] border 1px
+#for_window [class="Firefox"] border 1px
+#for_window [class="Opera"] border 1px
 for_window [class="Tkdiff"] floating enable
 for_window [class="Meld"] floating enable
 for_window [class="Shutter"] floating enable
@@ -233,9 +300,9 @@ for_window [class="Skype"] floating enable
 for_window [class="Skype" window_role="ConversationsWindow"] floating disable
 
 # assign windows to workspaces
-assign [class="Firefox"] l1
-assign [class="Opera"] l1
-assign [class="ioquake"] l10
+assign [class="Firefox"] I
+assign [class="Opera"] II
+assign [class="ioquake"] X
 
 # open new window in Sublime
 bindsym $mod+backslash exec s-n
@@ -245,7 +312,11 @@ bindsym Break exec mocp -G
 bindsym Pause exec mocp -G
 
 # autostart
-# exec firefox
+exec firefox
+exec opera
+exec slack
+exec skype-desktop
+exec --no-startup-id nm-applet
 
 # i3 HUD menu
 exec ~/.i3/i3-hud-menu/i3-appmenu-service.py
