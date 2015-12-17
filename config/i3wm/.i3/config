@@ -298,18 +298,25 @@ for_window [class="Shutter"] floating enable
 for_window [class="Thunderbird" window_role="Msgcompose"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Skype" window_role="ConversationsWindow"] floating disable
+for_window [class="Nuvolaplayer3-deezer"] floating enable
 
 # assign windows to workspaces
 assign [class="Firefox"] I
-assign [class="Opera"] II
+assign [class="Opera"] I
 assign [class="ioquake"] X
 
 # open new window in Sublime
 bindsym $mod+backslash exec s-n
 
 # toggle mocp pause to pause/break key
-bindsym Break exec mocp -G
-bindsym Pause exec mocp -G
+# bindsym Break exec mocp -G
+# bindsym Pause exec mocp -G
+bindsym Break      exec nuvolaplayer3ctl action toggle-play
+bindsym Pause      exec nuvolaplayer3ctl action toggle-play
+bindsym $win+Right exec nuvolaplayer3ctl action next-song
+bindsym $win+Left  exec nuvolaplayer3ctl action prev-song
+bindsym $win+Up    exec nuvolaplayer3ctl action activate
+bindsym $win+Down [class="Nuvolaplayer3-deezer"] kill
 
 # autostart
 exec firefox
