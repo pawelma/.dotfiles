@@ -245,6 +245,7 @@ new_float pixel 4
 bar {
 	position top
         status_command ~/.i3/extended-i3-status/extended_id_status.sh
+        # status_command ~/github/R3Status/examples/basic.rb
         tray_padding 1
         colors {
                 background $GRAY
@@ -264,8 +265,8 @@ bar {
 
 # Lock system.
 # you can set wallpaper using -i option (-t to tile image to 2 different monoitors) : see `man i3`
-bindsym $win+l exec i3lock -c 000000
-bindsym Control+$mod+l exec i3lock -c 000000
+bindsym $win+l exec ~/.i3/lock-with-log/lock.sh
+bindsym Control+$mod+l exec ~/.i3/lock-with-log/lock.sh
 
 # Set volume controll
 bindsym $mod+plus exec pactl set-sink-volume 0 +5%
