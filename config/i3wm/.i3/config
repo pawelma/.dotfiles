@@ -304,6 +304,7 @@ for_window [class="Nuvolaplayer3-deezer"] floating enable
 # assign windows to workspaces
 assign [class="Firefox"] I
 assign [class="Opera"] I
+assign [class="Slack"] I
 assign [class="ioquake"] X
 
 # open new window in Sublime
@@ -323,9 +324,12 @@ bindsym $win+Down [class="Nuvolaplayer3-deezer"] kill
 exec firefox
 exec opera
 exec slack
-exec skype-desktop
+exec skype
 exec --no-startup-id nm-applet
 
 # i3 HUD menu
 exec ~/.i3/i3-hud-menu/i3-appmenu-service.py
 bindsym $mod+g exec ~/.i3/i3-hud-menu/i3-hud-menu.py
+
+# workaround dual monitors problem
+#exec xrandr --output HDMI1 --off; xrandr --auto; xrandr --output HDMI1 --right-of VGA1
