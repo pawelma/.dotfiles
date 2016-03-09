@@ -16,7 +16,11 @@ set $win Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 8
+#font pango:System San Francisco Display 9
+#font pango:Ubuntu Mono 9
+font pango:Inconsolata 9
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -230,6 +234,18 @@ client.unfocused     $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
 client.urgent      $FOCUS $FOCUS $UNFOCUS $FOCUS
 client.background    $UNFOCUS
 
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+# window colors
+#                       border              background         text                 indicator
+#client.focused          $bg-color           $bg-color          $text-color          #00ff00
+#client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+#client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+#client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
 ### Borders ###
 #new_window pixel 4
 new_float pixel 4
@@ -244,8 +260,9 @@ new_float pixel 4
 # finds out, if available)
 bar {
 	position top
-        status_command ~/.i3/extended-i3-status/extended_id_status.sh
+        # status_command ~/.i3/extended-i3-status/extended_id_status.sh
         # status_command ~/github/R3Status/examples/basic.rb
+        status_command py3status -i ~/.i3/py3status.modules/
         tray_padding 1
         colors {
                 background $GRAY
@@ -257,6 +274,13 @@ bar {
                 active_workspace   $GRAY   $GRAY   $ORANGE
                 inactive_workspace $GRAY   $GRAY   $WHITE
                 urgent_workspace   $GREEN $GREEN   $WHITE
+
+                #background $bg-color
+        	    	#separator #757575
+            		#                  border             background         text
+            		#focused_workspace  $bg-color          $bg-color          $text-color
+            		#inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+            		#urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
 }
 # LEMONBAR

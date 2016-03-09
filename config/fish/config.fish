@@ -70,6 +70,7 @@ alias box='echo "XMLRPC_TRACE_XML=1 QBNoRedir=1 cubitv ;  echo -n V > /dev/watch
 alias rvmc='rvm current'
 alias rvm1='rvm use ruby-1.9.3-p545@mw2'
 alias rvm2='rvm use 2.1.5@mw2'
+alias rvm23='rvm use 2.3.0@mw2'
 alias rv1='echo ruby-1.9.3-p545@mw2 > .ruby-version'
 alias rv2='echo ruby-2.1.5@mw2 > .ruby-version'
 
