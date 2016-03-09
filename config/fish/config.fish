@@ -81,3 +81,6 @@ set -x GOPATH $HOME/goapps
 set -x PATH $HOME/github/linuxbrew/bin $PATH
 set -x MANPATH $HOME/github/linuxbrew/share/man $MANPATH
 set -x INFOPATH $HOME/github/linuxbrew/share/info $INFOPATH
+
+# add completion to pssh command
+make_completion pssh ssh

@@ -32,7 +32,9 @@ font pango:Inconsolata 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
+# run default terminal (gnome-terminal)
+bindsym $mod+BackSpace exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -315,8 +317,8 @@ for_window [class="Guake"] floating enable
 for_window [class="nuvolaplayer"] floating enable
 for_window [class="Nuvolaplayer3-grooveshark"] floating enable
 for_window [class="Pidgin" window_role="buddy_list"] floating enable
-#for_window [class="Firefox"] border 1px
-#for_window [class="Opera"] border 1px
+for_window [class="Firefox"] border  pixel 1
+for_window [class="Opera"] border pixel 1
 for_window [class="Tkdiff"] floating enable
 for_window [class="Meld"] floating enable
 for_window [class="Shutter"] floating enable
@@ -324,6 +326,7 @@ for_window [class="Thunderbird" window_role="Msgcompose"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Skype" window_role="ConversationsWindow"] floating disable
 for_window [class="Nuvolaplayer3-deezer"] floating enable
+for_window [class="URxvt"] border pixel 1
 
 # assign windows to workspaces
 assign [class="Firefox"] I
