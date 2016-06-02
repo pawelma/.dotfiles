@@ -27,8 +27,12 @@ set __fish_git_prompt_char_upstream_equal '≈'
 rvm reload > /dev/null
 # load rspec functions
 rspec --help > /dev/null
+be --help > /dev/null
 
 # ALIASES
+# urxvt ssh alias
+alias ssh="env TERM=xterm ssh"
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -36,10 +40,10 @@ alias l='ls -CF'
 alias gl='rvm gemset list'
 
 # tail aliases
-alias ta='cd /var/log/cubiware & ./multi-tail.sh (ls | grep log)' # tail all
-alias tm='cd /var/log/cubiware & ./multi-tail.sh (ls | grep log | grep -v nginx)' # tail only middleware
-alias tn='cd /var/log/cubiware & ./multi-tail.sh (ls | grep nginx)' # tail nginx logs
-alias clear-logs='cd /var/log/cubiware & ./clear-logs.sh (ls | grep "\.log")' # echo empty string to each log file
+alias ta='cd /var/log/cubiware & tail -f *.log' # tail all
+alias tm='cd /var/log/cubiware & tail -f (ls | grep log | grep -v nginx)' # tail only middleware
+alias tn='cd /var/log/cubiware & tail -f (ls | grep nginx)' # tail nginx logs
+alias clear-logs='cd /var/log/cubiware & echo > (ls | grep "\.log")' # echo empty string to each log file
 
 # folders aliases
 alias att='cd /home/pawel/cubiware/testing/api_test_tool'

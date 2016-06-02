@@ -1,11 +1,15 @@
 function terminal_name
-  cat .terminal-name
+  cat $argv/.terminal-name
 end
 
 function fish_title
   if test -f .terminal-name
-    echo (terminal_name)
+    echo (terminal_name .)
+  else if test -f ../.terminal-name
+    echo (terminal_name ..)/(basename $PWD)
+  else if test -f ../../.terminal-name
+    echo (terminal_name ../..)/../(basename $PWD)
   else
-    echo "fish"
+    echo (basename $PWD)
   end
 end

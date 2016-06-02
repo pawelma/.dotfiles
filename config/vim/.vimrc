@@ -28,6 +28,9 @@ Plug 'evanmiller/nginx-vim-syntax'
 " Interface and colors
 Plug 'flazz/vim-colorschemes'
 Plug 'bling/vim-airline'
+Plug 'kristijanhusak/vim-hybrid-material'
+
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -45,8 +48,10 @@ syntax on
 set hlsearch
 
 " color scheme
-colorscheme desert
-set guifont=monospace\ 12
+" colorscheme desert
+set background=dark
+colorscheme hybrid_reverse
+set guifont="Source Code Pro"\ 12
 set number
 set ignorecase
 set vb " turns off visual bell
@@ -56,22 +61,11 @@ set rnu
 
 " Airline config
 let g:airline#extensions#tabline#enabled = 1
-
-
-" From example for a vimrc file.
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+let g:airline_theme = "hybrid"
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
 set history=100		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands

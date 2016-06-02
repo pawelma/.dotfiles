@@ -1,13 +1,16 @@
-URxvt*transparent: true
+URxvt*transparent: false
 URxvt*tintColor: White
 URxvt*shading: 30
 URxvt*saveLines: 10000
-URxvt*font: xft:Inconsolata:pixelsize=15:antialias=true
-URxvt*boldFont: xft:Inconsolata:bold:pixelsize=15:antialias=true
+URxvt*font: xft:Source Code Pro:pixelsize=13
+URxvt*boldFont: xft:Source Code Pro:bold:pixelsize=13
 URxvt*scrollBar: false
 URxvt*scrollBar_right: true
 URxvt*scrollstyle: rxvt
 URxvt*urgentOnBell: true
+
+Xft.dpi:        96
+#Xft.antialias:  true
 
 # ! Tomorrow color scheme
 # URxvt*foreground: #f8f6f2
@@ -119,11 +122,58 @@ URxvt*urgentOnBell: true
 
 
 
+! scheme: material-theme
+*.foreground:   #c4c7d1
+*.background:   #1e282d
+*.fadeColor:    #80CBC4
+*.cursorColor:  #c4c7d1
+
+! black
+*.color0:       #073642
+*.color8:       #ff002b
+
+! red
+*.color1:       #eb606b
+*.color9:       #eb606b
+
+! green
+*.color2:       #c3e88d
+*.color10:      #c3e88d
+
+! yellow
+*.color3:       #f7eb95
+*.color11:      #f7eb95
+
+! blue
+*.color4:       #80cbc4
+*.color12:      #7dc6bf
+
+! magenta
+*.color5:       #ff2490
+*.color13:      #6c71c4
+
+! cyan
+*.color6:       #aeddff
+*.color14:      #35434d
+
+! white
+*.color7:       #ffffff
+*.color15:      #ffffff
 
 
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.KP_Home: \033[1~
+
 URxvt.iso14755: False
 
 URxvt.perl-ext-common: default,clipboard
+
+
+# fix vim abcd
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Left: \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
