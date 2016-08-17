@@ -19,7 +19,8 @@ set $win Mod4
 #font pango:DejaVu Sans Mono 8
 #font pango:System San Francisco Display 9
 #font pango:Ubuntu Mono 9
-font pango:Inconsolata 9
+#font pango:Inconsolata 9
+font pango:Roboto 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -94,18 +95,18 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+shift+a focus child
 
-set $l1 workspace I
-set $l2 workspace II
-set $l3 workspace III
-set $l4 workspace IV
-set $l5 workspace V
-set $l6 workspace VI
-set $l7 workspace VII
-set $l8 workspace VIII
-set $l9 workspace IX
-set $l10 workspace X
+set $l1 workspace "1:I"
+set $l2 workspace "2:II"
+set $l3 workspace "3:III"
+set $l4 workspace "4:IV"
+set $l5 workspace "5:V"
+set $l6 workspace "6:VI"
+set $l7 workspace "7:VII"
+set $l8 workspace "8:VIII"
+set $l9 workspace "9:IX"
+set $l10 workspace "10:X"
 
 set $r1 workspace 1
 set $r2 workspace 2
@@ -165,26 +166,26 @@ bindsym $mod+Shift+9 move container to $r9
 bindsym $mod+Shift+0 move container to $r10
 
 # workspace screens
-$l1 output VGA1
-$l2 output VGA1
-$l3 output VGA1
-$l4 output VGA1
-$l5 output VGA1
-$l6 output VGA1
-$l7 output VGA1
-$l8 output VGA1
-$l9 output VGA1
-$l10 output VGA1
-$r1 output HDMI1
-$r2 output HDMI1
-$r3 output HDMI1
-$r4 output HDMI1
-$r5 output HDMI1
-$r6 output HDMI1
-$r7 output HDMI1
-$r8 output HDMI1
-$r9 output HDMI1
-$r10 output HDMI1
+$l1 output HDMI1
+$l2 output HDMI1
+$l3 output HDMI1
+$l4 output HDMI1
+$l5 output HDMI1
+$l6 output HDMI1
+$l7 output HDMI1
+$l8 output HDMI1
+$l9 output HDMI1
+$l10 output HDMI1
+$r1 output VGA1
+$r2 output VGA1
+$r3 output VGA1
+$r4 output VGA1
+$r5 output VGA1
+$r6 output VGA1
+$r7 output VGA1
+$r8 output VGA1
+$r9 output VGA1
+$r10 output VGA1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -287,11 +288,17 @@ new_float pixel 4
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	position top
+      	position top
         # status_command ~/.i3/extended-i3-status/extended_id_status.sh
         # status_command ~/github/R3Status/examples/basic.rb
-        status_command py3status -i ~/.config/i3/py3status.modules/
-        tray_padding 1
+        status_command py3status -i ~/.i3/py3status.modules/
+        font pango:Roboto Sans, FontAwesome 10
+        strip_workspace_numbers yes
+        separator_symbol "  "
+        tray_padding 0
+        #height 28
+        tray_output VGA1
+        
         colors {
                 background $BASE
                 statusline $SELECTION
@@ -317,8 +324,8 @@ bar {
 
 # Lock system.
 # you can set wallpaper using -i option (-t to tile image to 2 different monoitors) : see `man i3`
-bindsym $win+l exec ~/.config/i3/lock-with-log/lock.sh
-bindsym Control+$mod+l exec ~/.config/i3/lock-with-log/lock.sh
+bindsym $win+l exec ~/.i3/lock-with-log/lock.sh
+bindsym Control+$mod+l exec ~/.i3/lock-with-log/lock.sh
 
 # Set volume controll
 bindsym $mod+plus exec pactl set-sink-volume 0 +5%
@@ -337,6 +344,12 @@ bindsym $win+s [title="Skype"]  scratchpad show
 bindsym $mod+b border toggle
 
 # floating windows and borders
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="task_dialog"] floating enable
 for_window [class="Nautilus" instance="file_progress"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="Guake"] floating enable
@@ -355,10 +368,10 @@ for_window [class="Nuvolaplayer3-deezer"] floating enable
 for_window [class="URxvt"] border pixel 1
 
 # assign windows to workspaces
-assign [class="Firefox"] I
-assign [class="Opera"] I
-assign [class="Slack"] I
-assign [class="ioquake"] X
+assign [class="Firefox"] "1:I"
+assign [class="Opera"] "1:I"
+assign [class="Slack"] "1:I"
+assign [class="ioquake"] "1:X"
 
 # open new window in Sublime
 bindsym $mod+backslash exec s-n
@@ -388,5 +401,7 @@ bindsym $mod+g exec ~/.i3/i3-hud-menu/i3-hud-menu.py
 #exec xrandr --output HDMI1 --off; xrandr --auto; xrandr --output HDMI1 --right-of VGA1
 
 # Add compton
-exec /usrb/bin/compton --config /home/pawel/.i3/compton/.compton.conf.i3
+exec_always --no-startup-id killall compton
+#exec /usrb/bin/compton --config /home/pawel/.i3/compton/.compton.conf.i3
+exec_always --no-startup-id sleep 1 && /usr/bin/compton --config ~/home/pawel/.i3/compton/.compton.conf.i3 --dbus
 exec --no-startup-id feh --bg-fill ~/Pictures/timber.jpg
