@@ -35,7 +35,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt
 # run default terminal (gnome-terminal)
-bindsym $mod+BackSpace exec i3-sensible-terminal
+bindsym $mod+BackSpace exec urxvt -pe tabbed 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -220,23 +220,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
-### THEME ###
-#set $FOCUS #989898
-#set $UNFOCUS #3c3b37
-#set $BLACK #000000
-#set $WHITE #ffffff
-#set $ORANGE #d64937
-#set $GRAY #454545
-#set $GREEN #00ad17
-
-## Layout colors      bord  bg    text    indicator (split)
-#client.focused       $GRAY $GRAY $WHITE $GRAY
-#client.focused_inactive $UNFOCUS $UNFOCUS $WHITE $UNFOCUS
-#client.unfocused     $UNFOCUS $UNFOCUS $FOCUS $UNFOCUS
-#client.urgent      $FOCUS $FOCUS $UNFOCUS $FOCUS
-#client.background    $UNFOCUS
-
 ### MATERIAL THEME ### (https://github.com/equinusocio/material-theme)
 #263238,#2E3A40,#80CBC4,#FFFFFF,#13191C,#ffffff,#50fa7b,#FF5555
 set $BASE #263238
@@ -251,29 +234,12 @@ set $BLACK #000000
 set $GREEN #50FA7B
 set $RED #FF5555
 
-#set $ORANGE #546E7A
-#set $GRAY #263238
-#set $GREEN #50fa7b
-#set $BLUE #80CBC4
-
 # Layout colors         bord  bg    text    indicator (split)
 client.focused          $BASE $BASE $WHITE  $TEAL
 client.focused_inactive $CURRENT $CURRENT $WHITE $TEAL
 client.unfocused        $CURRENT $CURRENT $COMMENT $TEAL
 client.urgent           $GREEN $GREEN $BLACK $TEAL
 client.background       $BASE
-
-#set $bg-color 	         #2f343f
-#set $inactive-bg-color   #2f343f
-#set $text-color          #f3f4f5
-#set $inactive-text-color #676E7D
-#set $urgent-bg-color     #E53935
-# window colors
-#                       border              background         text                 indicator
-#client.focused          $bg-color           $bg-color          $text-color          #00ff00
-#client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-#client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-#client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
 ### Borders ###
 #new_window pixel 4
@@ -298,7 +264,7 @@ bar {
         tray_padding 0
         #height 28
         tray_output VGA1
-        
+
         colors {
                 background $BASE
                 statusline $SELECTION
@@ -310,17 +276,8 @@ bar {
                 inactive_workspace $BASE   $BASE   $COMMENT
                 urgent_workspace   $GREEN $GREEN   $BLACK
 
-                #background $bg-color
-        	    	#separator #757575
-            		#                  border             background         text
-            		#focused_workspace  $bg-color          $bg-color          $text-color
-            		#inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-            		#urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
         }
 }
-# LEMONBAR
-#exec --no-startup-id conky -c ~/.i3/lemonbar/conky_empty_panel.config
-#exec --no-startup-id ~/.i3/lemonbar/bar.sh
 
 # Lock system.
 # you can set wallpaper using -i option (-t to tile image to 2 different monoitors) : see `man i3`
@@ -337,7 +294,7 @@ bindsym $mod+Tab workspace back_and_forth
 # scratchpad
 bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
-bindsym F12 [class="Gnome-terminal"] scratchpad show
+bindsym F12 [class="URxvt"] scratchpad show
 bindsym $win+s [title="Skype"]  scratchpad show
 
 # border changing
@@ -358,6 +315,7 @@ for_window [class="Nuvolaplayer3-grooveshark"] floating enable
 for_window [class="Pidgin" window_role="buddy_list"] floating enable
 for_window [class="Firefox"] border  pixel 1
 for_window [class="Opera"] border pixel 1
+for_window [class="cool-retro-term"] border pixel 0
 for_window [class="Tkdiff"] floating enable
 for_window [class="Meld"] floating enable
 for_window [class="Shutter"] floating enable
@@ -404,4 +362,4 @@ bindsym $mod+g exec ~/.i3/i3-hud-menu/i3-hud-menu.py
 exec_always --no-startup-id killall compton
 #exec /usrb/bin/compton --config /home/pawel/.i3/compton/.compton.conf.i3
 exec_always --no-startup-id sleep 1 && /usr/bin/compton --config ~/home/pawel/.i3/compton/.compton.conf.i3 --dbus
-exec --no-startup-id feh --bg-fill ~/Pictures/timber.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/earthshaker.jpg
