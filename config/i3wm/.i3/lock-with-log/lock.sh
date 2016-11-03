@@ -15,7 +15,7 @@ player_state=`nuvolaplayer3ctl track-info | grep State | awk '{print $2}'`
 nuvolaplayer3ctl action pause
 
 # lock
-i3lock -c 000000 --nofork
+i3lock -d -c 000000 --nofork
 
 # unpause player
 if [ "playing" = "$player_state" ]; then

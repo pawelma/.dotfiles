@@ -35,7 +35,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt
 # run default terminal (gnome-terminal)
-bindsym $mod+BackSpace exec urxvt -pe tabbed 
+bindsym $mod+BackSpace exec urxvt -pe tabbed
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -176,16 +176,16 @@ $l7 output HDMI1
 $l8 output HDMI1
 $l9 output HDMI1
 $l10 output HDMI1
-$r1 output VGA1
-$r2 output VGA1
-$r3 output VGA1
-$r4 output VGA1
-$r5 output VGA1
-$r6 output VGA1
-$r7 output VGA1
-$r8 output VGA1
-$r9 output VGA1
-$r10 output VGA1
+$r1 output eDP-1
+$r2 output eDP-1
+$r3 output eDP-1
+$r4 output eDP-1
+$r5 output eDP-1
+$r6 output eDP-1
+$r7 output eDP-1
+$r8 output eDP-1
+$r9 output eDP-1
+$r10 output eDP-1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -255,15 +255,13 @@ new_float pixel 4
 # finds out, if available)
 bar {
       	position top
-        # status_command ~/.i3/extended-i3-status/extended_id_status.sh
-        # status_command ~/github/R3Status/examples/basic.rb
-        status_command py3status -i ~/.i3/py3status.modules/
+        status_command py3status -n 1 -i ~/.config/i3/py3status.modules/
         font pango:Roboto Sans, FontAwesome 10
         strip_workspace_numbers yes
         separator_symbol "  "
         tray_padding 0
         #height 28
-        tray_output VGA1
+        #tray_output eDP-1
 
         colors {
                 background $BASE
@@ -281,12 +279,15 @@ bar {
 
 # Lock system.
 # you can set wallpaper using -i option (-t to tile image to 2 different monoitors) : see `man i3`
-bindsym $win+l exec ~/.i3/lock-with-log/lock.sh
-bindsym Control+$mod+l exec ~/.i3/lock-with-log/lock.sh
+bindsym $win+l exec ~/.config/i3/lock-with-log/lock.sh
+bindsym Control+$mod+l exec ~/.config/i3/lock-with-log/lock.sh
 
 # Set volume controll
 bindsym $mod+plus exec pactl set-sink-volume 0 +5%
-bindsym $mod+minus exec pactl set-sink-volume 0 -- -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym $mod+minus exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # workspace switch
 bindsym $mod+Tab workspace back_and_forth
@@ -332,34 +333,39 @@ assign [class="Slack"] "1:I"
 assign [class="ioquake"] "1:X"
 
 # open new window in Sublime
-bindsym $mod+backslash exec s-n
+bindsym $mod+backslash exec subl -n
 
 # toggle mocp pause to pause/break key
 # bindsym Break exec mocp -G
 # bindsym Pause exec mocp -G
 bindsym Break      exec nuvolaplayer3ctl action toggle-play
 bindsym Pause      exec nuvolaplayer3ctl action toggle-play
+bindsym XF86AudioPlay exec nuvolaplayer3ctl action toggle-play
+bindsym XF86AudioPause exec nuvolaplayer3ctl action toggle-play
 bindsym $win+Right exec nuvolaplayer3ctl action next-song
+bindsym XF86AudioNext exec nuvolaplayer3ctl action next-song
 bindsym $win+Left  exec nuvolaplayer3ctl action prev-song
+bindsym XF86AudioPrev exec nuvolaplayer3ctl action prev-song
 bindsym $win+Up    exec nuvolaplayer3ctl action activate
 bindsym $win+Down [class="nuvolaplayer3-deezer"] kill
 
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
 # autostart
 exec firefox
-exec opera
 exec slack
-exec skype
 exec --no-startup-id nm-applet
 
 # i3 HUD menu
-exec ~/.i3/i3-hud-menu/i3-appmenu-service.py
-bindsym $mod+g exec ~/.i3/i3-hud-menu/i3-hud-menu.py
+exec ~/.config/i3/i3-hud-menu/i3-appmenu-service.py
+bindsym $mod+g exec ~/.config/i3/i3-hud-menu/i3-hud-menu.py
 
 # workaround dual monitors problem
-#exec xrandr --output HDMI1 --off; xrandr --auto; xrandr --output HDMI1 --right-of VGA1
+#exec xrandr --output HDMI1 --off; xrandr --auto; xrandr --output HDMI1 --right-of eDP-1
 
 # Add compton
 exec_always --no-startup-id killall compton
-#exec /usrb/bin/compton --config /home/pawel/.i3/compton/.compton.conf.i3
-exec_always --no-startup-id sleep 1 && /usr/bin/compton --config ~/home/pawel/.i3/compton/.compton.conf.i3 --dbus
-exec --no-startup-id feh --bg-fill ~/Pictures/earthshaker.jpg
+exec_always --no-startup-id sleep 1 && /usr/bin/compton --config ~/home/pawel/.config/i3/compton/.compton.conf.i3 --dbus
+#exec --no-startup-id feh --bg-fill ~/Pictures/earthshaker.jpg

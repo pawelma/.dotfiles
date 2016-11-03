@@ -174,9 +174,6 @@ Xft.dpi:        96
 *.colorUL: #4682B4
 
 
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-
 URxvt.keysym.Home: \033[1~
 URxvt.keysym.KP_Home: \033[1~
 
@@ -192,13 +189,14 @@ URxvt.matcher.button: 1
 URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
 
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.C-C: perl:clipboard:copy
+
 # Tabbed
 URxvt.tabbed.tabbar-fg: 13
-URxvt.tabbed.tabbar-bg: 14 
-URxvt.tabbed.tab-fg: 255 
+URxvt.tabbed.tabbar-bg: 14
+URxvt.tabbed.tab-fg: 255
 URxvt.tabbed.tab-bg: 14
-
-
 
 # fix vim abcd
 URxvt.keysym.Control-Up: \033[1;5A

@@ -1,6 +1,5 @@
 [user]
-	name = Paweł Madejski
-	email = pmadejski@cubiware.com
+  name = Paweł Madejski
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
@@ -10,7 +9,6 @@
 [alias]
 	st = status
 	co = checkout
-	cob = checkout -b personal/pawelm/
 	di = diff --color
 	dis = diff --staged
 	ci = commit
@@ -53,3 +51,5 @@
 	ui = auto
 [push]
 	default = current
+[include]
+	path = ~/.gitconfig.d
