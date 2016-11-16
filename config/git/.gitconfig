@@ -41,6 +41,8 @@
 	prbs = pull --rebase --stat
 	prbc = pull --rebase --continue
 
+	rmu = !rm $(git st -s | grep '??' | awk '{print $2}')
+
 	#http://blog.kfish.org/2010/04/git-lola.html
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit

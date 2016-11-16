@@ -173,13 +173,35 @@ Xft.dpi:        96
 ! color for links select (matcher ext)
 *.colorUL: #4682B4
 
-
 URxvt.keysym.Home: \033[1~
 URxvt.keysym.KP_Home: \033[1~
 
 URxvt.iso14755: False
+# URxvt.iso14755: off
+# URxvt.iso14755_52: off
 
-URxvt.perl-ext-common: default,clipboard,matcher
+# URxvt.perl-lib: ${HOME}/.urxvt/ext/perls
+URxvt.perl-lib: /usr/lib/urxvt/perl
+
+URxvt.perl-ext-common: default,matcher,clipboard
+
+URxvt.clipboard.copycmd:  xsel --input  --clipboard
+URxvt.clipboard.pastecmd: xsel --output --clipboard
+
+URxvt.keysym.Control-C: perl:clipboard:copy
+URxvt.keysym.Control-V: perl:clipboard:paste
+
+# clipboard
+# URxvt.keysym.C-V: perl:clipboard:paste
+# URxvt.keysym.Shift-C-v: perl:clipboard:paste
+# URxvt.keysym.C-C: perl:clipboard:copy
+# URxvt.keysym.Shift-C-C: perl:clipboard:copy
+
+# URxvt.keysym.C-C: perl:clipboard:copy
+# URxvt.keysym.C-V: perl:clipboard:paste
+
+# URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+# URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 
 # Matcher ext
 URxvt.perl-ext-common: default,matcher
@@ -188,9 +210,6 @@ URxvt.matcher.button: 1
 
 URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
-
-URxvt.keysym.C-V: perl:clipboard:paste
-URxvt.keysym.C-C: perl:clipboard:copy
 
 # Tabbed
 URxvt.tabbed.tabbar-fg: 13

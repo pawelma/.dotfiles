@@ -1,7 +1,7 @@
+#! perl
+#
 # script to copy/paste text in URXVT
 # copy it to /usr/lib/urxvt/perl/clipboard
-
-#! perl
 
 sub copy {
     my $query = $_[0]->selection;

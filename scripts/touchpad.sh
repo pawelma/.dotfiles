@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TOUCHPAD_DEVICE=12 # check with `xinput` command
+TOUCHPAD_DEVICE=`xinput list | grep Touchpad | sed -e "s/.*id=\([0-9]*\).*/\1/g"`
 
 if [[ "$1" == "on" ]]; then
   xinput enable $TOUCHPAD_DEVICE
@@ -17,7 +17,7 @@ fi
 xinput list $TOUCHPAD_DEVICE | grep disabled > /dev/null
 
 if [ $? -eq 0 ]; then
-  echo -e "TOUCHPAD: \e[31mdisabled\e[0m"
+  echo -e "TOUCHPAD($TOUCHPAD_DEVICE): \e[31mdisabled\e[0m"
 else
-  echo -e "TOUCHPAD: \e[32menabled\e[0m"
+  echo -e "TOUCHPAD($TOUCHPAD_DEVICE): \e[32menabled\e[0m"
 fi

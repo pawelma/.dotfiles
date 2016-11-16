@@ -1,3 +1,10 @@
+# Path to Oh My Fish install.
+set -q XDG_DATA_HOME
+  and set -gx OMF_PATH "$XDG_DATA_HOME/omf"
+  or set -gx OMF_PATH "$HOME/.local/share/omf"
+
+# Load Oh My Fish configuration.
+source $OMF_PATH/init.fish
 # colors
 set -g _material_base  263238
 set -g _material_select 546E7A
@@ -56,7 +63,7 @@ set __fish_git_prompt_char_upstream_behind '←'
 set __fish_git_prompt_char_upstream_equal '≈'
 
 # ALIASES
-# urxvt ssh alias
+# URxvt ssh alias
 alias ssh="env TERM=xterm ssh"
 
 # some more ls aliases
@@ -64,6 +71,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias gl='rvm gemset list'
+
+# gem 'm' alias (set TEST ENV by default)
+alias t="env RAILS_ENV=test env RACK_ENV=test m"
 
 # add gopath
 #set -x GOPATH $HOME/goapps
@@ -77,3 +87,6 @@ alias gl='rvm gemset list'
 # add completion to pssh command
 #make_completion pssh ssh
 if test -f /home/pawel/.autojump/share/autojump/autojump.fish; . /home/pawel/.autojump/share/autojump/autojump.fish; end
+
+# Load conf.d configurations
+source $HOME/.config/fish/conf.d/*.fish

@@ -33,7 +33,7 @@ font pango:Roboto 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt -pe clipboard
 # run default terminal (gnome-terminal)
 bindsym $mod+BackSpace exec urxvt -pe tabbed
 
@@ -166,16 +166,16 @@ bindsym $mod+Shift+9 move container to $r9
 bindsym $mod+Shift+0 move container to $r10
 
 # workspace screens
-$l1 output HDMI1
-$l2 output HDMI1
-$l3 output HDMI1
-$l4 output HDMI1
-$l5 output HDMI1
-$l6 output HDMI1
-$l7 output HDMI1
-$l8 output HDMI1
-$l9 output HDMI1
-$l10 output HDMI1
+$l1 output HDMI-1
+$l2 output HDMI-1
+$l3 output HDMI-1
+$l4 output HDMI-1
+$l5 output HDMI-1
+$l6 output HDMI-1
+$l7 output HDMI-1
+$l8 output HDMI-1
+$l9 output HDMI-1
+$l10 output HDMI-1
 $r1 output eDP-1
 $r2 output eDP-1
 $r3 output eDP-1
@@ -261,7 +261,7 @@ bar {
         separator_symbol "  "
         tray_padding 0
         #height 28
-        #tray_output eDP-1
+        tray_output eDP-1
 
         colors {
                 background $BASE
@@ -327,9 +327,9 @@ for_window [class="Nuvolaplayer3-deezer"] floating enable
 for_window [class="URxvt"] border pixel 1
 
 # assign windows to workspaces
-assign [class="Firefox"] "1:I"
-assign [class="Opera"] "1:I"
-assign [class="Slack"] "1:I"
+#assign [class="Firefox"] "1:I"
+#assign [class="Opera"] "1:I"
+#assign [class="Slack"] "1:I"
 assign [class="ioquake"] "1:X"
 
 # open new window in Sublime

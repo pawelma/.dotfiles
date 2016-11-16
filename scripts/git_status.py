@@ -80,6 +80,9 @@ class GitStatusSegment:
         return (staged, unmerged, changed, untracked)
 
     def parse_rebase_status(self):
+        step = None
+        total = None
+        current = None
         if os.path.isdir(os.path.join(self.gitdir, 'rebase-merge')):
             step = int(open(os.path.join(self.gitdir, 'rebase-merge', 'nmsgnum')).read())
             total = int(open(os.path.join(self.gitdir, 'rebase-merge', 'end')).read())
@@ -102,7 +105,8 @@ class GitStatusSegment:
         step = None
         if detached:
             step, total, current = self.parse_rebase_status()
-            branch = current
+            if current:
+                branch = current
             color = bg('red')
         elif staged or unmerged or changed or untracked:
             color = bg('yellow')
@@ -150,7 +154,10 @@ class GitStatusSegment:
             return
 
         if branch == 'HEAD':
-            branch = self.execute(base + ['rev-parse', '--short', 'HEAD'])[0][0]
+            status, err = self.execute(base + ['rev-parse', '--short', 'HEAD'])
+            if err:
+                return
+            branch = status.pop(0)
 
         staged, unmerged, changed, untracked = self.parse_status(status)
 
