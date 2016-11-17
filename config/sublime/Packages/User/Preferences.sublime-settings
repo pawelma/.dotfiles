@@ -1,36 +1,47 @@
 {
 	"caret_extra_width": 1,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/SublimeLinter/Tomorrow (SL).tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"copy_with_empty_selection": false,
 	"drag_text": false,
+	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
-		"*.tags",
-		"*.tags_sorted_by_file",
-		"*.terminal-name",
-		"*.gemtags"
+		".tag*",
+		".gemtags",
+		".rvmrc",
+		".ruby-version"
 	],
-	"findreplace_medium": true,
+	"folder_exclude_patterns":
+	[
+		".git",
+		"log",
+		"doc",
+		"node_modules",
+		".yardoc",
+		"tmp",
+		"cache",
+		".release_cache"
+	],
 	"font_face": "Source Code Pro",
 	"font_size": 10,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Markdown",
-		"BracketHighlighter"
+		"Vintage"
 	],
 	"rulers":
 	[
 		80
 	],
+	"save_on_focus_lost": true,
 	"scroll_past_end": true,
+	"show_line_endings": true,
 	"sidebar_small": true,
 	"tab_size": 2,
 	"tabs_medium": true,
-	"theme": "Numix Light.sublime-theme",
+	"theme": "Material-Theme.sublime-theme",
 	"toggle_menu": true,
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true

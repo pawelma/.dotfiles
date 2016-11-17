@@ -3,7 +3,7 @@
   { "keys": ["ctrl+'"], "command": "toggle_setting", "args": {"setting": "word_wrap"}  },
   //formatowanie
   { "keys": ["ctrl+0"], "command": "insert", "args": {"characters": "\nrequire 'pry'; binding.pry\n"} },
-  { "keys": ["ctrl+9"], "command": "insert", "args": {"characters": "\ngem 'pry'\ngem 'pry-debugger'\n"} },
+  { "keys": ["ctrl+9"], "command": "insert", "args": {"characters": "\nrequire 'pry-remote'; binding.remote_pry\n"} },
   { "keys": ["f5"], "command": "refresh_folder_list" },
   { "keys": ["alt+leftbracket"], "command": "focus_group", "args": { "group": 0 } },
   { "keys": ["alt+{"], "command": "focus_group", "args": { "group": 1 } },
@@ -94,5 +94,6 @@
         [0, 1, 1, 2], [1, 1, 2, 2]
       ]
     }
-  }
+  },
+  { "keys": ["ctrl+l"], "command": "git_gutter_diff_popup" },
 ]

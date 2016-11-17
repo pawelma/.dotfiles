@@ -1,24 +1,20 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
 	"installed_packages":
 	[
-		"ColorSchemeSelector",
-		"Colorsublime",
+		"Color Highlighter",
 		"CTags",
 		"fish-shell",
 		"Git",
-		"Indent XML",
-		"Markdown Preview",
-		"MarkdownEditing",
-		"nginx",
+		"GitGutter",
+		"i3 wm",
+		"JSX",
+		"Material Theme",
 		"Package Control",
-		"RSense",
-		"SqlBeautifier",
-		"SublimeLinter",
-		"SublimeLinter-rubocop",
-		"SublimeLinter-ruby",
-		"Theme - Numix Light"
+		"Splunk Conf File Syntax Highlighting",
+		"ToDone"
 	]
 }

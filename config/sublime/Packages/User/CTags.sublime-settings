@@ -1,3 +1,5 @@
 {
-  "command": "/home/pawel/scripts/ctags.rb"
+  "command": "/home/pawel/scripts/ruby_ctags.sh",
+  "autocomplete": true,
+  "extra_tag_files": [".gemtags", ".tags"]
 }
