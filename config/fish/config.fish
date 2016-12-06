@@ -89,4 +89,8 @@ alias t="env RAILS_ENV=test env RACK_ENV=test m"
 if test -f /home/pawel/.autojump/share/autojump/autojump.fish; . /home/pawel/.autojump/share/autojump/autojump.fish; end
 
 # Load conf.d configurations
-source $HOME/.config/fish/conf.d/*.fish
+#source $HOME/.config/fish/conf.d/*.fish
+for custom_conf in $HOME/.config/fish/conf.d/*.fish
+  source $custom_conf
+end
+

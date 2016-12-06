@@ -28,6 +28,7 @@ Plug 'evanmiller/nginx-vim-syntax'
 " Interface and colors
 Plug 'flazz/vim-colorschemes'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-hybrid-material'
 
 Plug 'tpope/vim-commentary'

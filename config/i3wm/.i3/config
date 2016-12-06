@@ -231,8 +231,8 @@ set $LIGHT_GRAY #2E3A40
 set $GRAY #13191C
 set $WHITE #FFFFFF
 set $BLACK #000000
-set $GREEN #50FA7B
 set $RED #FF5555
+set $GREEN #50FA7B
 
 # Layout colors         bord  bg    text    indicator (split)
 client.focused          $BASE $BASE $WHITE  $TEAL
@@ -261,7 +261,7 @@ bar {
         separator_symbol "  "
         tray_padding 0
         #height 28
-        tray_output eDP-1
+        tray_output eDP-1-1
 
         colors {
                 background $BASE
@@ -350,8 +350,8 @@ bindsym $win+Up    exec nuvolaplayer3ctl action activate
 bindsym $win+Down [class="nuvolaplayer3-deezer"] kill
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight +10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -10p # decrease screen brightness
 
 # autostart
 exec firefox

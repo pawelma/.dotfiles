@@ -4,3 +4,5 @@
 .ruby-version
 .tags_sorted_by_file
 config/fish/conf.d/*.fish
+TODO
+CR.md
