@@ -1,0 +1,445 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = #263238
+background-alt = #546E7A
+foreground = #FFFFFF
+foreground-alt = #2E3A40
+primary = #37474F
+secondary = #80CBC4
+alert = #FF5555
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[bar/HDMI1]
+monitor = ${env:MONITOR:HDMI1}
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 0
+
+;background = ${xrdb:color9}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+
+overline-size = 0
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
+
+border-bottom = 1
+border-bottom-color = ${colors.background-alt}
+
+spacing = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;0
+font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+font-2 = -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+font-3 = FontAwesome:pixelsize=10
+
+modules-left = i3
+modules-center =
+modules-right =
+
+tray-position = right
+tray-padding = 2
+
+[bar/eDP1]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 0
+
+;background = ${xrdb:color9}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 0
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
+
+border-bottom = 1
+border-bottom-color = ${colors.background-alt}
+
+spacing = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;0
+font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+font-2 = -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+font-3 = FontAwesome:pixelsize=10
+
+modules-left = i3 xwindow
+modules-center = nuvolaplayer
+modules-right = filesystem memory cpu wlan battery volume date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:80:...%
+format-foreground = ${colors.background-alt}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /home
+
+label-mounted =  %free%
+
+; [module/bspwm]
+; type = internal/bspwm
+; ws-icon-default = x
+
+; label-focused = %index%
+; label-focused-background = ${colors.background-alt}
+; label-focused-underline= ${colors.primary}
+; label-focused-padding = 2
+
+; label-occupied = %index%
+; label-occupied-padding = 2
+
+; label-urgent = %index%
+; label-urgent-background = ${colors.alert}
+; label-urgent-padding = 2
+
+; label-empty = %index%
+; label-empty-foreground = ${colors.foreground-alt}
+; label-empty-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+
+pin-workspaces = true
+strip-wsnumbers = true
+
+ws-icon-1 = ♛
+ws-icon-2 = ♜
+ws-icon-3 = ♝
+ws-icon-4 = ♞
+ws-icon-default = ♟
+
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
+
+label-unfocused = %name%
+label-unfocused-padding = 2
+
+label-urgent = %name%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-visible = %name%
+label-visible-foreground = 2
+label-visible-padding = 2
+
+[module/mpd]
+type = internal/mpd
+
+; format-online = <label-song> <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+
+host = 127.0.0.1
+port = 6600
+
+; label-song-maxlen = 25
+; label-song-ellipsis = true
+
+; icon-prev = 
+; icon-seekb = 
+; icon-stop = 
+; icon-play = 
+; icon-pause = 
+; icon-next = 
+; icon-seekf = 
+
+; icon-random = 
+; icon-repeat = 
+
+; toggle-on-foreground = #FFF
+; toggle-off-foreground = #FFF
+
+; Available tags:
+;   <label-song> (default)
+;   <label-time>
+;   <bar-progress>
+;   <toggle> - gets replaced with <icon-(pause|play)>
+;   <toggle-stop> - gets replaced with <icon-(stop|play)>
+;   <icon-random>
+;   <icon-repeat>
+;   <icon-repeatone>
+;   <icon-prev>
+;   <icon-stop>
+;   <icon-play>
+;   <icon-pause>
+;   <icon-next>
+;   <icon-seekb>
+;   <icon-seekf>
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+; Available tags:
+;   <label-offline>
+;format-offline = <label-offline>
+
+; Available tokens:
+;   %artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song = 𝄞 %artist% - %title%
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+;label-time = %elapsed% / %total%
+
+; Available tokens:
+;   None
+label-offline = 🎜 mpd is offline
+
+; Only applies if <icon-X> is used
+icon-play = ⏵
+icon-pause = ⏸
+icon-stop = ⏹
+icon-prev = ⏮
+icon-next = ⏭
+icon-seekb = ⏪
+icon-seekf = ⏩
+icon-random = 🔀
+icon-repeat = 🔁
+icon-repeatone = 🔂
+
+; Used to display the state of random/repeat/repeatone
+; Only applies if <icon-[random|repeat|repeatone]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+; Only applies if <bar-progress> is used
+bar-progress-width = 45
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+[module/backlight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = │
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+label = %percentage%
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %percentage_used%
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+; format-connected-underline = #9f78e1
+; format-disconnected-underline = ${self.format-connected-underline}
+
+label-connected = %essid%
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =  %d-%m
+date-alt = " %Y-%m-%d"
+
+time =  %H:%M
+time-alt = %H:%M:%S
+
+format-prefix =
+format-prefix-foreground = ${colors.foreground}
+; format-underline = #0a6cf5
+
+label = %date% %time%
+click-right = gsimplecal
+
+[module/volume]
+type = internal/volume
+
+# amixer scontrols | sed -nr "s/.*'([[:alnum:]]+)'.*/\1/p"
+; master-mixer = Master
+; speaker-mixer = Speaker
+; headphone-mixer = Headphone
+; # amixer controls | grep Headphone | grep Volume
+; headphone-id = 6
+; mapping = true
+
+format-volume = <ramp-volume> <label-volume> <bar-volume>
+; label-volume = 
+; label-volume-foreground = ${colors.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground}
+label-muted = muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.background-alt}
+bar-volume-foreground-1 = ${colors.background-alt}
+bar-volume-foreground-2 = ${colors.background-alt}
+bar-volume-foreground-3 = ${colors.background-alt}
+bar-volume-foreground-4 = ${colors.background-alt}
+bar-volume-foreground-5 = ${colors.background-alt}
+bar-volume-foreground-6 = ${colors.background-alt}
+bar-volume-gradient = false
+bar-volume-indicator = │
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = ${colors.background-alt}
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.secondary}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.background-alt}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = gksu reboot
+
+menu-2-0 = power off
+menu-2-0-exec = gksu poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/nuvolaplayer]
+type = custom/script
+
+exec = nuvolaplayer3ctl track-info | head -3 | awk '{ s = ""; for (i = 2; i <= NF; i++) s = s $i " "; print s }' | tac | awk 'NR%3{printf "%s- ",$0;next;}1' | sed 's/playing -/⏸/' | sed 's/paused -/⏵/' | sed 's/unknown/reklama :\(/g'
+interval = 2
+
+; format = <label>
+format-foreground = ${colors.background-alt}
+
+; label = %output:0:30%...
+click-left = nuvolaplayer3ctl action toggle-play
+click-right = nuvolaplayer3ctl action activate
+scroll-up = nuvolaplayer3ctl action prev-song
+scroll-down = nuvolaplayer3ctl action next-song
+
+

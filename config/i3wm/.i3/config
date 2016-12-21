@@ -20,7 +20,7 @@ set $win Mod4
 #font pango:System San Francisco Display 9
 #font pango:Ubuntu Mono 9
 #font pango:Inconsolata 9
-font pango:Roboto 10
+font pango:Roboto Sans 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -166,7 +166,7 @@ bindsym $mod+Shift+9 move container to $r9
 bindsym $mod+Shift+0 move container to $r10
 
 # workspace screens
-$l1 output HDMI-1
+$l1 output HDMI1
 $l2 output HDMI-1
 $l3 output HDMI-1
 $l4 output HDMI-1
@@ -235,47 +235,49 @@ set $RED #FF5555
 set $GREEN #50FA7B
 
 # Layout colors         bord  bg    text    indicator (split)
-client.focused          $BASE $BASE $WHITE  $TEAL
-client.focused_inactive $CURRENT $CURRENT $WHITE $TEAL
+client.focused          $BASE $BASE $SELECTION  $TEAL
+client.focused_inactive $CURRENT $CURRENT $SELECTION $TEAL
 client.unfocused        $CURRENT $CURRENT $COMMENT $TEAL
-client.urgent           $GREEN $GREEN $BLACK $TEAL
+client.urgent           $RED $GREEN $BLACK $TEAL
 client.background       $BASE
 
 ### Borders ###
 #new_window pixel 4
-new_float pixel 4
+new_float pixel 2
 
 ### Gaps ###
-#set $default_gaps_inner 12
-#set $default_gaps_outer 0
-#gaps inner $default_gaps_inner
-#gaps outer $default_gaps_outer
+set $default_gaps_inner 3
+set $default_gaps_outer 0
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+smart_gaps on
+smart_borders on
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-      	position top
-        status_command py3status -n 1 -i ~/.config/i3/py3status.modules/
-        font pango:Roboto Sans, FontAwesome 10
-        strip_workspace_numbers yes
-        separator_symbol "  "
-        tray_padding 0
-        #height 28
-        tray_output eDP-1-1
+#bar {
+#      	position top
+#        status_command py3status -n 1 -i ~/.config/i3/py3status.modules/
+#        font pango:Roboto Sans, FontAwesome 10
+#        strip_workspace_numbers yes
+#        separator_symbol "  "
+#        tray_padding 0
+#        #height 28
+#        tray_output eDP-1-1
 
-        colors {
-                background $BASE
-                statusline $SELECTION
-                separator $COMMENT
+#        colors {
+#                background $BASE
+#                statusline $SELECTION
+#                separator $COMMENT
 
-                #layout colors     border backgorund text
-                focused_workspace  $SELECTION $SELECTION $WHITE
-                active_workspace   $COMMENT   $COMMENT   $WHITE
-                inactive_workspace $BASE   $BASE   $COMMENT
-                urgent_workspace   $GREEN $GREEN   $BLACK
+#                #layout colors     border backgorund text
+#                focused_workspace  $SELECTION $SELECTION $WHITE
+#                active_workspace   $COMMENT   $COMMENT   $WHITE
+#                inactive_workspace $BASE   $BASE   $COMMENT
+#                urgent_workspace   $GREEN $GREEN   $BLACK
 
-        }
-}
+#        }
+#}
 
 # Lock system.
 # you can set wallpaper using -i option (-t to tile image to 2 different monoitors) : see `man i3`
@@ -283,11 +285,21 @@ bindsym $win+l exec ~/.config/i3/lock-with-log/lock.sh
 bindsym Control+$mod+l exec ~/.config/i3/lock-with-log/lock.sh
 
 # Set volume controll
-bindsym $mod+plus exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym $mod+minus exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+#bindsym $mod+plus exec pactl set-sink-volume 0 +5%
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+#bindsym $mod+minus exec pactl set-sink-volume 0 -5%
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+#bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
+bindsym $mod+plus exec amixer -q sset 'Master' 5%+
+bindsym XF86AudioRaiseVolume exec amixer -q sset 'Master' 5%+
+bindsym $mod+minus exec amixer -q sset 'Master' 5%-
+bindsym XF86AudioLowerVolume exec amixer -q sset 'Master' 5%-
+bindsym XF86AudioMute exec amixer -q sset 'Master' toggle
+
+# circle output (external HDMI output)
+bindsym $win+F8 exec /home/pawel/scripts/circle-display.sh
+bindsym XF86Display exec /home/pawel/scripts/circle-display.sh
 
 # workspace switch
 bindsym $mod+Tab workspace back_and_forth
@@ -314,9 +326,6 @@ for_window [class="Guake"] floating enable
 for_window [class="nuvolaplayer"] floating enable
 for_window [class="Nuvolaplayer3-grooveshark"] floating enable
 for_window [class="Pidgin" window_role="buddy_list"] floating enable
-for_window [class="Firefox"] border  pixel 1
-for_window [class="Opera"] border pixel 1
-for_window [class="cool-retro-term"] border pixel 0
 for_window [class="Tkdiff"] floating enable
 for_window [class="Meld"] floating enable
 for_window [class="Shutter"] floating enable
@@ -324,7 +333,12 @@ for_window [class="Thunderbird" window_role="Msgcompose"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Skype" window_role="ConversationsWindow"] floating disable
 for_window [class="Nuvolaplayer3-deezer"] floating enable
-for_window [class="URxvt"] border pixel 1
+for_window [class="cool-retro-term"] border pixel 0
+for_window [class="Firefox"] border  pixel 1
+for_window [class="chromium-browser"] border  pixel 0
+for_window [class="Opera"] border pixel 0
+for_window [class="URxvt"] border pixel 0
+for_window [class="Sublime"] border pixel 0
 
 # assign windows to workspaces
 #assign [class="Firefox"] "1:I"
@@ -353,6 +367,12 @@ bindsym $win+Down [class="nuvolaplayer3-deezer"] kill
 bindsym XF86MonBrightnessUp exec xbacklight +10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -10p # decrease screen brightness
 
+# init siji font for polybar
+exec xset +fp /home/pawel/.fonts
+
+# log session start
+exec ~/.config/i3/lock-with-log/log.sh Start i3
+
 # autostart
 exec firefox
 exec slack
@@ -367,5 +387,8 @@ bindsym $mod+g exec ~/.config/i3/i3-hud-menu/i3-hud-menu.py
 
 # Add compton
 exec_always --no-startup-id killall compton
-exec_always --no-startup-id sleep 1 && /usr/bin/compton --config ~/home/pawel/.config/i3/compton/.compton.conf.i3 --dbus
-#exec --no-startup-id feh --bg-fill ~/Pictures/earthshaker.jpg
+exec_always --no-startup-id sleep 1 && /usr/bin/compton --config /home/pawel/.config/i3/compton/.compton.conf.i3 --dbus
+exec --no-startup-id feh --bg-fill ~/Pictures/Space-Desktop.jpg
+
+# polybar
+exec_always --no-startup-id ~/.config/polybar/run.sh
