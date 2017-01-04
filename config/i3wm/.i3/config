@@ -339,12 +339,13 @@ for_window [class="chromium-browser"] border  pixel 0
 for_window [class="Opera"] border pixel 0
 for_window [class="URxvt"] border pixel 0
 for_window [class="Sublime"] border pixel 0
+for_window [class="Nylas N1"] border pixel 1
+for_window [class="Nylas N1"] floating enable
 
 # assign windows to workspaces
 #assign [class="Firefox"] "1:I"
-#assign [class="Opera"] "1:I"
 #assign [class="Slack"] "1:I"
-assign [class="ioquake"] "1:X"
+assign [class="ioquake"] "10:X"
 
 # open new window in Sublime
 bindsym $mod+backslash exec subl -n
@@ -373,6 +374,9 @@ exec xset +fp /home/pawel/.fonts
 # log session start
 exec ~/.config/i3/lock-with-log/log.sh Start i3
 
+# set wallpaper
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+
 # autostart
 exec firefox
 exec slack
@@ -388,7 +392,6 @@ bindsym $mod+g exec ~/.config/i3/i3-hud-menu/i3-hud-menu.py
 # Add compton
 exec_always --no-startup-id killall compton
 exec_always --no-startup-id sleep 1 && /usr/bin/compton --config /home/pawel/.config/i3/compton/.compton.conf.i3 --dbus
-exec --no-startup-id feh --bg-fill ~/Pictures/Space-Desktop.jpg
 
 # polybar
 exec_always --no-startup-id ~/.config/polybar/run.sh
