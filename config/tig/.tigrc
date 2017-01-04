@@ -7,8 +7,11 @@ set diff-context     = 4    # Number of lines to show around diff changes (diff)
 
 # add signing key to commits
 bind status C !git commit --gpg-sign
-# bind ammend 
+# bind ammend
 bind status A !git commit --gpg-sign --amend
 
 # bind rebase interactive
 bind main s !git rebase --interactive %(commit)^
+
+# bind diff to
+bind main D !git diff %(commit)
