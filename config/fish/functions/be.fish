@@ -1,8 +1,3 @@
-function be
+function be --description 'bundle exec'
   bundle exec $argv
 end
-
-function dbe
-  bundle exec ruby -d -S $argv
-end
-
