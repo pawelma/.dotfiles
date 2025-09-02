@@ -1,57 +1,62 @@
 [user]
   name = Paweł Madejski
-[core]
-	editor = vim
-	excludesfile = ~/.gitignore
-[merge]
-	tool = meld
-  conflictstyle = diff3
+[color]
+  ui = auto
 [alias]
-	st = status
-	co = checkout
-	di = diff --color
-	dis = diff --staged
-	ci = commit
-	sl = stash list
-	ss = stash show
-	ss0 = stash show stash@{0}
-	ss1 = stash show stash@{1}
-	ss2 = stash show stash@{2}
-	ss3 = stash show stash@{3}
-	ss4 = stash show stash@{4}
-	ss5 = stash show stash@{5}
-	sp = stash pop
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  ls = ls-files
+  wc = whatchanged
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  last = log -n 1 HEAD
+  wdiff = diff --word-diff
+  unstage = reset HEAD --
+  contributors = shortlog -s -n
+	pf = push --force-with-lease
+	prbs = pull --rebase --stat
+	prbc = pull --rebase --continue
 	rbc = rebase --continue
 	rba = rebase --abort
 	rbs = rebase --skip
+	rbreapply = rebase --reapply-cherry-picks
 	cpa = cherry-pick --abort
 	cp  = cherry-pick
-	pt = push --tags
-	rbi = rebase -i HEAD~2
-	rbi1 = rebase -i HEAD~1
-	rbi2 = rebase -i HEAD~2
-	rbi3 = rebase -i HEAD~3
-	rbi4 = rebase -i HEAD~4
-	rbi5 = rebase -i HEAD~5
-	rbi6 = rebase -i HEAD~6
-	rbi7 = rebase -i HEAD~7
-	rbi8 = rebase -i HEAD~8
-	rbi9 = rebase -i HEAD~9
-	rbi10 = rebase -i HEAD~10
-	prbs = pull --rebase --stat
-	prbc = pull --rebase --continue
-
-	rmu = !rm $(git st -s | grep '??' | awk '{print $2}')
-
-	#http://blog.kfish.org/2010/04/git-lola.html
+	cpc = cherry-pick --continue
+	rmu = !rm -r $(git st -s | grep '??' | awk '{print $2}')
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-
-	#meld
-	meld = !/home/pawel/cubiware/share/scripts/git-meld/git-meld.pl
-[color]
-	ui = auto
+	hs = log --pretty='%C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s' --graph --date=relative --date-order
+	merge = !sh \"echo wtf?\"
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+[diff "gpg"]
+  textconv = gpg --quiet --no-tty --decrypt
+[core]
+	editor = nvim
+	attributesfile = ~/.gitattributes
+	excludesfile = ~/.gitignore
 [push]
 	default = current
-[include]
-	path = ~/.gitconfig.d
+	autoSetupRemote = true
+[pull]
+	default = current
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[gpg]
+	program = gpg
+
+[rebase]
+	autoStash = true
+[credential]
+	username = pawelma

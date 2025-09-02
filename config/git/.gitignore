@@ -1,8 +1,9 @@
-.terminal-name
-.gemtags
-.tags
-.ruby-version
-.tags_sorted_by_file
-config/fish/conf.d/*.fish
-TODO
-CR.md
+.DS_Store
+.vscode
+.docker-exec-name
+kiln.toml
+.tool-versions
+.before_tests.patch
+*.patch
+.overmind.env
+.rdbgrc.breakpoints
