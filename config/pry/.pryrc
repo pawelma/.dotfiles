@@ -36,10 +36,10 @@ rescue
 end
 
 # Add custom 'benchmark' method
-begin
-  require 'benchmark/ips'
+ begin
+   require 'benchmark/ips'
 
-  def benchmark(*actions)
+   def benchmark(*actions)
     return 'Nothing to benchmark!' if actions.size < 2
 
     actions.each do |action|
@@ -78,3 +78,48 @@ end
 def ll
   puts %x{ls -al}
 end
+
+ class HashDiff
+    NO_VALUE = Class.new
+
+    def self.compare(prev, current)
+      new.compare(prev, current)
+    end
+
+    def compare(prev, current)
+      return compare_hashes(prev, current) if [prev, current].all?(Hash)
+
+      raise ArgumentError, "Error - Hash expected as both input params"
+    end
+
+    private
+
+    def compare_hashes(prev, current)
+      all_keys = prev.keys | current.keys
+
+      get_diff_with_keys(prev, current, all_keys)
+    end
+
+    def compare_arrays(prev, current)
+      all_keys = (0..[prev.length, current.length].max).to_a
+
+      get_diff_with_keys(prev, current, all_keys)
+    end
+
+    def get_diff_with_keys(prev, current, keys)
+      keys.inject({}) do |acc, key|
+        prev_value = prev.fetch(key, NO_VALUE)
+        current_value = current.fetch(key, NO_VALUE)
+        next acc if prev_value == current_value
+
+        acc.merge({ key => get_diff(prev_value, current_value) })
+      end
+    end
+
+    def get_diff(prev, current)
+      return compare_hashes(prev, current) if [prev, current].all?(Hash)
+      return compare_arrays(prev, current) if [prev, current].all?(Array)
+
+      { before: prev, after: current }
+    end
+  end
