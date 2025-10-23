@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitor USB keyboard and change layout accordingly
+After=network.target
+
+[Service]
+ExecStart=%h/.local/bin/keyboard-layout-monitor.sh
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Run keyboard layout monitor every 5 seconds
+
+[Timer]
+OnBootSec=5s
+OnUnitActiveSec=5s
+AccuracySec=1s
+Unit=keyboard-layout-monitor.service
+
+[Install]
+WantedBy=timers.target
