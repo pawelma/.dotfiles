@@ -1,0 +1,29 @@
+// those are XKB custom symbols for Magic Keyboard remapping
+// to install copy this file to /usr/share/X11/xkb/symbols/custom
+// and then add the following lines to /usr/share/X11/xkb/rules/evdev
+// in the section ! option
+//   custom:magic_keyboard     = +custom(magic_keyboard)
+//   custom:capslock           = +custom(capslock)
+
+default partial modifier_keys
+xkb_symbols "capslock" {
+    key <CAPS> { [ F13 ], type[group1] = "ONE_LEVEL" };
+};
+
+
+partial modifier_keys
+xkb_symbols "magic_keyboard" {
+    // swap left alt with super, left control with alt and left super with ctl
+    replace key <LALT> { [ Super_L ] };
+    replace key <LWIN> { [ Control_L, Control_L ] };
+    replace key <LCTL> { [ Alt_L, Meta_L ] };
+
+    // swap right alt with right win
+    replace key <RALT> { [ Super_R] };
+    replace key <RWIN> { [ ISO_Level3_Shift ] };
+
+    modifier_map Mod1    { <LCTL> }; // for left alt modifier
+    modifier_map Mod4    { <LALT>, <RALT> }; // for super modifiers
+    modifier_map Mod5    { <RWIN> }; // for right alt modifier
+    modifier_map Control { <LWIN> }; // for left control modifier
+};

@@ -9,6 +9,49 @@
 # as a user, also it does not work when keyboard is plugged/unplugged
 # while the system is suspended or turned off.
 
+# Function to install XKB custom symbols
+install_xkb_custom() {
+  echo "=== Setting up XKB custom symbols ==="
+
+  local xkb_symbols_file="/usr/share/X11/xkb/symbols/custom"
+  local xkb_rules_file="/usr/share/X11/xkb/rules/evdev"
+  local source_file="$(pwd)/xkb_symbols_custom"
+
+  # Copy custom symbols file (idempotent)
+  if [ -f "$xkb_symbols_file" ]; then
+    echo "XKB symbols file already exists at $xkb_symbols_file"
+    echo "Updating it with current configuration..."
+  fi
+  sudo cp "$source_file" "$xkb_symbols_file"
+  echo "✓ Copied custom symbols to $xkb_symbols_file"
+
+  # Add custom options to evdev rules (idempotent)
+  if grep -q "custom:magic_keyboard" "$xkb_rules_file" 2>/dev/null; then
+    echo "✓ XKB rules already configured in $xkb_rules_file"
+  else
+    echo "Adding custom options to $xkb_rules_file..."
+    # Find the "! option = symbols" section and add our custom options after it
+    # Using tab characters for proper alignment with the file format
+    sudo sed -i '/^! option[[:space:]]*=[[:space:]]*symbols$/a\  custom:capslock\t=\t+custom(capslock)\n  custom:magic_keyboard\t=\t+custom(magic_keyboard)' "$xkb_rules_file"
+    echo "✓ Added custom options to evdev rules"
+  fi
+
+  echo "✓ XKB custom symbols setup complete"
+  echo
+}
+
+# Ask user if they want to set up XKB custom modifiers
+echo "=== Magic Keyboard Installation ==="
+echo
+read -p "Do you want to set up custom XKB modifiers (capslock and magic_keyboard remapping)? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  install_xkb_custom
+else
+  echo "Skipping XKB custom symbols setup"
+  echo
+fi
+
 lsusb
 
 echo
