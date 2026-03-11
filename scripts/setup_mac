@@ -110,13 +110,11 @@ LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
 PLIST_NAME="com.local.keyboard-remap.plist"
 PLIST_SRC="$CONFIG/mac_iso_keyboard/$PLIST_NAME"
 PLIST_DST="$LAUNCH_AGENTS/$PLIST_NAME"
-REMAPPING_JSON="$CONFIG/mac_iso_keyboard/key_remapping.json"
-
-remapping_payload="$(cat "$REMAPPING_JSON")"
+KEYBOARD_SCRIPT="$CONFIG/mac_iso_keyboard/keyboard.sh"
 
 mkdir -p "$LAUNCH_AGENTS"
 
-sed "s|KEYBOARD_REMAPPING_PLACEHOLDER|$remapping_payload|" "$PLIST_SRC" > "$PLIST_DST"
+sed "s|KEYBOARD_SCRIPT_PLACEHOLDER|$KEYBOARD_SCRIPT|" "$PLIST_SRC" > "$PLIST_DST"
 
 if launchctl list | grep -q "com.local.keyboard-remap"; then
   launchctl unload "$PLIST_DST" 2>/dev/null || true

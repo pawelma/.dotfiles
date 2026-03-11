@@ -6,10 +6,8 @@
   <string>com.local.keyboard-remap</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/bin/hidutil</string>
-    <string>property</string>
-    <string>--set</string>
-    <string>KEYBOARD_REMAPPING_PLACEHOLDER</string>
+    <string>/bin/bash</string>
+    <string>KEYBOARD_SCRIPT_PLACEHOLDER</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
