@@ -61,6 +61,31 @@ mkdir -p "$HOME/.config"
 link_file "$CONFIG/fish"                    "$HOME/.config/fish"
 link_file "$CONFIG/starship/starship.toml"  "$HOME/.config/starship.toml"
 
+link_file "$CONFIG/mac_iso_keyboard/keyboard.sh" "$HOME/keyboard.sh"
+
+# --- Keyboard remapping (LaunchAgent) -----------------------------------
+
+info "setting up keyboard remapping LaunchAgent"
+
+LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
+PLIST_NAME="com.local.keyboard-remap.plist"
+PLIST_SRC="$CONFIG/mac_iso_keyboard/$PLIST_NAME"
+PLIST_DST="$LAUNCH_AGENTS/$PLIST_NAME"
+REMAPPING_JSON="$CONFIG/mac_iso_keyboard/key_remapping.json"
+
+remapping_payload="$(cat "$REMAPPING_JSON")"
+
+mkdir -p "$LAUNCH_AGENTS"
+
+sed "s|KEYBOARD_REMAPPING_PLACEHOLDER|$remapping_payload|" "$PLIST_SRC" > "$PLIST_DST"
+
+if launchctl list | grep -q "com.local.keyboard-remap"; then
+  launchctl unload "$PLIST_DST" 2>/dev/null || true
+fi
+
+launchctl load "$PLIST_DST"
+ok "keyboard remapping LaunchAgent installed and loaded"
+
 # --- Git custom config --------------------------------------------------
 
 if [ ! -f "$HOME/.gitconfig-custom" ]; then
