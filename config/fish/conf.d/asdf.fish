@@ -5,11 +5,11 @@ else
     set _asdf_shims "$ASDF_DATA_DIR/shims"
 end
 
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
+# Mind that this might potentially change the order of PATH items,
+# however it's required to make the ASDF work with VS Code as Code config env is overridden by the copilot
+# and makes VS Code to prepend the /usr/bin prior the $_asdf_shims which causes asdf to not find the binaries
+# if there are system binaries (like OSX ruby 2.6)
+fish_add_path --move --prepend $_asdf_shims
 set --erase _asdf_shims
 
 # completions

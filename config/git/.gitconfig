@@ -60,3 +60,5 @@
 	autoStash = true
 [credential]
 	username = pawelma
+[absorb]
+    maxStack=50
