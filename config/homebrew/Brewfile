@@ -1,0 +1,70 @@
+# Taps
+tap "anomalyco/tap"
+tap "sst/tap"
+
+# Core tools
+brew "git"
+brew "gh"
+brew "asdf"
+brew "coreutils"
+brew "jq"
+brew "yq"
+brew "ripgrep"
+brew "tree"
+brew "watch"
+brew "parallel"
+brew "htop"
+brew "bat"
+brew "tldr"
+
+# Shell and prompt
+brew "fish"
+brew "starship"
+
+# Git tools
+brew "git-absorb"
+brew "git-secrets"
+brew "tig"
+
+# Editors
+brew "neovim"
+
+# Dev tools
+brew "overmind"
+brew "lazydocker"
+brew "pkgconf"
+brew "markdownlint-cli"
+brew "anomalyco/tap/opencode"
+
+# Cloud and infrastructure
+brew "awscli"
+brew "saml2aws"
+
+# Libraries
+brew "openssl@3"
+brew "readline"
+brew "librdkafka"
+brew "libsodium"
+brew "libxml2"
+brew "libyaml"
+
+# Data tools
+brew "imagemagick"
+brew "ghostscript"
+brew "poppler"
+
+# Network
+brew "iperf3"
+
+# GUI tools
+brew "baobab"
+
+# Casks
+cask "bruno"
+cask "docker-desktop"
+cask "font-caskaydia-mono-nerd-font"
+cask "launchbar"
+cask "monitorcontrol"
+cask "pgadmin4"
+cask "rectangle"
+cask "visual-studio-code"
