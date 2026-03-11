@@ -63,6 +63,13 @@ link_file "$CONFIG/starship/starship.toml"  "$HOME/.config/starship.toml"
 
 link_file "$CONFIG/mac_iso_keyboard/keyboard.sh" "$HOME/keyboard.sh"
 
+# --- iTerm2 -------------------------------------------------------------
+
+info "setting up iTerm2 preferences"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$CONFIG/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+ok "iTerm2 configured to load preferences from $CONFIG/iterm2"
+
 # --- Keyboard remapping (LaunchAgent) -----------------------------------
 
 info "setting up keyboard remapping LaunchAgent"
