@@ -1,3 +1,5 @@
+[include]
+  path = ~/.gitconfig-custom
 [user]
   name = Paweł Madejski
 [color]
@@ -58,7 +60,7 @@
 
 [rebase]
 	autoStash = true
-[credential]
-	username = pawelma
 [absorb]
     maxStack=50
+[credential]
+	username = pawelma
