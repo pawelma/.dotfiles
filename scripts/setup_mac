@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+CONFIG="$DOTFILES/config"
+
+info()  { printf "\033[34m[info]\033[0m  %s\n" "$1"; }
+ok()    { printf "\033[32m[ok]\033[0m    %s\n" "$1"; }
+warn()  { printf "\033[33m[warn]\033[0m  %s\n" "$1"; }
+error() { printf "\033[31m[error]\033[0m %s\n" "$1"; exit 1; }
+
+link_file() {
+  local src="$1" dst="$2"
+
+  if [ -L "$dst" ]; then
+    local current
+    current="$(readlink "$dst")"
+    if [ "$current" = "$src" ]; then
+      ok "already linked: $dst"
+      return
+    fi
+    warn "repointing symlink: $dst"
+    rm "$dst"
+  elif [ -e "$dst" ]; then
+    warn "backing up existing $dst to ${dst}.backup"
+    mv "$dst" "${dst}.backup"
+  fi
+
+  ln -s "$src" "$dst"
+  ok "linked: $dst -> $src"
+}
+
+# --- Homebrew -----------------------------------------------------------
+
+info "installing Homebrew packages"
+
+if ! command -v brew &>/dev/null; then
+  info "Homebrew not found, installing..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+brew bundle --file="$CONFIG/homebrew/Brewfile"
+ok "Homebrew packages installed"
+
+# --- Symlinks -----------------------------------------------------------
+
+info "setting up symlinks"
+
+link_file "$CONFIG/asdf/.asdfrc"            "$HOME/.asdfrc"
+link_file "$CONFIG/gems/.gemrc"             "$HOME/.gemrc"
+link_file "$CONFIG/git/.gitconfig"          "$HOME/.gitconfig"
+link_file "$CONFIG/git/.gitignore"          "$HOME/.gitignore"
+link_file "$CONFIG/pry/.pryrc"              "$HOME/.pryrc"
+link_file "$CONFIG/tig/.tigrc"              "$HOME/.tigrc"
+link_file "$CONFIG/vim/.vimrc"              "$HOME/.vimrc"
+
+mkdir -p "$HOME/.bundle"
+link_file "$CONFIG/bundler/config"          "$HOME/.bundle/config"
+
+mkdir -p "$HOME/.config"
+link_file "$CONFIG/fish"                    "$HOME/.config/fish"
+link_file "$CONFIG/starship/starship.toml"  "$HOME/.config/starship.toml"
+
+# --- Git custom config --------------------------------------------------
+
+if [ ! -f "$HOME/.gitconfig-custom" ]; then
+  info "creating ~/.gitconfig-custom"
+
+  printf "Enter git email address: "
+  read -r git_email
+
+  if [ -z "$git_email" ]; then
+    error "email cannot be empty"
+  fi
+
+  cat > "$HOME/.gitconfig-custom" <<EOF
+[user]
+  email = $git_email
+EOF
+
+  ok "created ~/.gitconfig-custom with email: $git_email"
+else
+  ok "~/.gitconfig-custom already exists, skipping"
+fi
+
+# --- SSH key ------------------------------------------------------------
+
+git_email="$(git config user.email)"
+
+if [ -z "$git_email" ]; then
+  error "could not determine git email from config"
+fi
+
+if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
+  info "generating SSH key for $git_email"
+  mkdir -p "$HOME/.ssh"
+  ssh-keygen -t ed25519 -C "$git_email" -f "$HOME/.ssh/id_ed25519"
+  eval "$(ssh-agent -s)"
+  ssh-add "$HOME/.ssh/id_ed25519"
+  ok "SSH key generated and added to agent"
+  info "add the public key to GitHub:"
+  cat "$HOME/.ssh/id_ed25519.pub"
+else
+  ok "SSH key already exists at ~/.ssh/id_ed25519"
+fi
+
+echo ""
+ok "Mac setup complete"
