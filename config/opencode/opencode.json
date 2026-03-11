@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "small_model": "github-copilot/gpt-4.1",
+  "plugin": [
+  ],
+  "permission": {
+    "external_directory": {
+      "~/projects/**": "allow",
+      "~/.config/opencode/**": "allow"
+    }
+  },
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "figma": {
+      "type": "remote",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}

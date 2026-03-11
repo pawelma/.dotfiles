@@ -63,6 +63,38 @@ link_file "$CONFIG/starship/starship.toml"  "$HOME/.config/starship.toml"
 
 link_file "$CONFIG/mac_iso_keyboard/keyboard.sh" "$HOME/keyboard.sh"
 
+# --- Neovim -------------------------------------------------------------
+
+info "setting up neovim config"
+mkdir -p "$HOME/.config/nvim"
+link_file "$HOME/.vimrc" "$HOME/.config/nvim/init.vim"
+
+# --- VS Code keybindings ------------------------------------------------
+
+info "setting up VS Code keybindings"
+VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+if [ -d "$VSCODE_USER_DIR" ]; then
+  link_file "$CONFIG/vscode/keybindings.json" "$VSCODE_USER_DIR/keybindings.json"
+else
+  warn "VS Code user directory not found, skipping keybindings (install VS Code first)"
+fi
+
+# --- OpenCode config ----------------------------------------------------
+
+info "setting up OpenCode config"
+mkdir -p "$HOME/.config/opencode"
+link_file "$CONFIG/opencode/opencode.json"       "$HOME/.config/opencode/opencode.json"
+link_file "$CONFIG/opencode/agents"               "$HOME/.config/opencode/agents"
+link_file "$CONFIG/opencode/skills"               "$HOME/.config/opencode/skills"
+
+# --- Claude Code config -------------------------------------------------
+
+info "setting up Claude Code config"
+mkdir -p "$HOME/.claude"
+link_file "$CONFIG/claude/settings.json"  "$HOME/.claude/settings.json"
+link_file "$CONFIG/claude/mcp.json"       "$HOME/.claude/mcp.json"
+link_file "$CONFIG/claude/commands"        "$HOME/.claude/commands"
+
 # --- iTerm2 -------------------------------------------------------------
 
 info "setting up iTerm2 preferences"

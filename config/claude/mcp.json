@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "url",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "figma": {
+      "type": "url",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}

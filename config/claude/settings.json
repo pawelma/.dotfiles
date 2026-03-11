@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(~/projects/**)",
+      "Read(~/.claude/**)",
+      "Edit(~/projects/**)",
+      "Write(~/projects/**)",
+      "Glob",
+      "Grep",
+      "Bash(*)",
+      "WebFetch(domain:*)",
+      "WebSearch"
+    ],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.netrc)",
+      "Read(~/.config/gh/**)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Bash(rm -rf /*)",
+      "Bash(sudo *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)"
+    ],
+    "defaultMode": "auto"
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "api.github.com",
+        "*.atlassian.net",
+        "mcp.context7.com",
+        "mcp.figma.com",
+        "rubygems.org",
+        "registry.npmjs.org"
+      ]
+    }
+  },
+  "skipAutoPermissionPrompt": true
+}
