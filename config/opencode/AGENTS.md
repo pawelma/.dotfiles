@@ -21,6 +21,16 @@ This prevents accidentally committing files that should not be in the repository
 
 Never modify an existing PR description without reading the current one first (`gh pr view --json body`). It may contain manual edits made outside the session. Fetch the up-to-date description, then decide whether an update is needed — and preserve any manual changes when updating.
 
+## GitHub Review API
+
+- To post inline PR comments, always use the GraphQL `addPullRequestReviewThread` mutation (with `path` + `line` + `side`). The legacy position-based `addPullRequestReviewComment` mutation is deprecated and will reject line/side args.
+- Verify every line anchor against the current PR head SHA before posting; if the working tree moved mid-review, re-fetch the diff.
+
+## Shell Environment
+
+- Default shell is fish, and the sandbox blocks keychain/TLS verification and TMPDIR writes. Run `gh`, `git push`, and AWS CLI commands with the sandbox disabled on the first attempt rather than retrying after a cert failure.
+- Do not build multi-line strings, jq filters, or `$var` expansions inline in bash heredocs — write the payload to a file (or use a short Python script) and pass it by path. Never use shell loops for text renames; use Python.
+
 ## Tooling / Search Conventions
 
 Prefer ripgrep (`rg`) over `grep` for all code searches.
