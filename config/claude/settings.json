@@ -26,6 +26,51 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y ccstatusline@latest --hook"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx -y ccstatusline@latest --hook"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/pawel.madejski/projects/github/pawelma/.dotfiles/config/claude/hooks/session-title-review.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest"
+  },
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true
+  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
@@ -38,8 +83,44 @@
         "mcp.figma.com",
         "rubygems.org",
         "registry.npmjs.org"
+      ],
+      "allowAllUnixSockets": true,
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowRead": [
+        "~/.ssh/known_hosts",
+        "~/.ssh/config",
+        "~/.config/gh",
+        "/System/Library/Keychains",
+        "/Library/Keychains",
+        "/private/etc/ssl",
+        "/etc/ssl"
       ]
-    }
+    },
+    "excludedCommands": [
+      "acli *"
+    ]
   },
-  "skipAutoPermissionPrompt": true
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "editorMode": "normal",
+  "autoScrollEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "git push (non-force) to any remote or branch",
+      "gh CLI commands for GitHub operations (PRs, issues, checks, releases)",
+      "acli CLI commands for Jira operations (view, search, create, edit, comment, transition)",
+      "Running test suites (rspec, bundle exec rspec, rake spec, minitest)",
+      "bundle exec commands for Ruby project tooling",
+      "rake tasks",
+      "Running linters and formatters (rubocop, eslint, prettier)",
+      "npm and yarn commands (install, test, build, run)",
+      "Docker and docker-compose commands for local development",
+      "curl and wget for fetching data",
+      "Local development server commands"
+    ]
+  }
 }
