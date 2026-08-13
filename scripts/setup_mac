@@ -94,6 +94,7 @@ mkdir -p "$HOME/.claude"
 link_file "$CONFIG/claude/settings.json"  "$HOME/.claude/settings.json"
 link_file "$CONFIG/claude/mcp.json"       "$HOME/.claude/mcp.json"
 link_file "$CONFIG/claude/commands"        "$HOME/.claude/commands"
+link_file "$CONFIG/claude/output-styles"  "$HOME/.claude/output-styles"
 
 # --- iTerm2 -------------------------------------------------------------
 
