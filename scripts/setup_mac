@@ -84,8 +84,11 @@ fi
 info "setting up OpenCode config"
 mkdir -p "$HOME/.config/opencode"
 link_file "$CONFIG/opencode/opencode.json"       "$HOME/.config/opencode/opencode.json"
+link_file "$CONFIG/opencode/oh-my-opencode.json"  "$HOME/.config/opencode/oh-my-opencode.json"
+link_file "$CONFIG/opencode/smart-title.jsonc"    "$HOME/.config/opencode/smart-title.jsonc"
 link_file "$CONFIG/opencode/agents"               "$HOME/.config/opencode/agents"
 link_file "$CONFIG/opencode/skills"               "$HOME/.config/opencode/skills"
+link_file "$CONFIG/opencode/AGENTS.md"            "$HOME/.config/opencode/AGENTS.md"
 
 # --- Claude Code config -------------------------------------------------
 
@@ -95,6 +98,7 @@ link_file "$CONFIG/claude/settings.json"  "$HOME/.claude/settings.json"
 link_file "$CONFIG/claude/mcp.json"       "$HOME/.claude/mcp.json"
 link_file "$CONFIG/claude/commands"        "$HOME/.claude/commands"
 link_file "$CONFIG/claude/output-styles"  "$HOME/.claude/output-styles"
+link_file "$CONFIG/opencode/AGENTS.md"    "$HOME/.claude/CLAUDE.md"
 
 # --- iTerm2 -------------------------------------------------------------
 
