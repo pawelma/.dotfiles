@@ -8,3 +8,8 @@ kiln.toml
 *.patch
 .overmind.env
 .rdbgrc.breakpoints
+docs/superpowers
+
+**/.claude/settings.local.json
+
+**/.claude/.cc-writes/
